@@ -2,6 +2,8 @@
 
 _Good things come in pairs_
 
+teste commit to master!
+
 Looking to mix up a backend with `express`/`sequelize` and a frontend with
 `react`/`redux`? That's `boilermaker`!
 
