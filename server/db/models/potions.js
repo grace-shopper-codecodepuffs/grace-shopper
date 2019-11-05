@@ -26,7 +26,7 @@ const Potion = db.define('potion', {
         allowNull: true
     },
     price:{
-        type: Sequelize.NUMBER,
+        type: Sequelize.FLOAT,
         validate: {
             min: 0,
         },
