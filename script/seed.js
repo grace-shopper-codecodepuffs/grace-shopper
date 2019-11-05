@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Potion} = require('../server/db/models')
+const {User, Potion, Address} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -46,9 +46,33 @@ async function seed() {
       price: 9.95
     })
   ])
+  const address = await Promise.all([
+    Address.create({
+      line_1: '350 Muggle Hump',
+      line_2: 'Apt 7W',
+      city: 'Broomsticktonville',
+      state: 'Kentucky',
+      zip: '90210'
+    }),
+    Address.create({
+      line_1: '13 Owl Road',
+      line_2: 'Apt 16B',
+      city: 'Wandington',
+      state: 'Salem',
+      zip: '37451'
+    }),
+    Address.create({
+      line_1: '666 Devils Lair',
+      line_2: 'PH',
+      city: 'Bloody',
+      state: 'Hell',
+      zip: '66666'
+    })
+  ])
 
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${potions.length} potions`)
+  console.log(`seeded ${address.length} addresses`)
   console.log(`seeded successfully`)
 }
 

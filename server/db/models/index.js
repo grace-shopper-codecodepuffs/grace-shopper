@@ -1,6 +1,7 @@
 const User = require('./user')
 const Potion = require('./potions')
 const Order = require('./order')
+const Address = require('./address')
 
 Order.belongsTo(User)
 User.hasMany(Order)
@@ -27,5 +28,6 @@ Order.belongsTo(Address, {as: billingAddress})
 module.exports = {
   User,
   Potion,
+  Address,
   Order
 }
