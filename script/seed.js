@@ -48,22 +48,24 @@ async function seed() {
   ])
   const address = await Promise.all([
     Address.create({
-      line_1: '350 Muggle Hump',
-      line_2: 'Apt 7W',
+      name: 'Booty booty booty',
+      line1: '350 Muggle Hump',
+      line2: 'Apt 7W',
       city: 'Broomsticktonville',
       state: 'Kentucky',
       zip: '90210'
     }),
     Address.create({
-      line_1: '13 Owl Road',
-      line_2: 'Apt 16B',
+      name: 'my office!',
+      line1: '13 Owl Road',
       city: 'Wandington',
       state: 'Salem',
       zip: '37451'
     }),
     Address.create({
-      line_1: '666 Devils Lair',
-      line_2: 'PH',
+      name: 'headwig',
+      line1: '666 Devils Lair',
+      line2: 'PH',
       city: 'Bloody',
       state: 'Hell',
       zip: '66666'

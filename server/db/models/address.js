@@ -7,36 +7,24 @@ const Address = db.define('address', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  line_1: {
+  line1: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isEmpty: false
-    }
+    allowNull: false
   },
-  line_2: {
+  line2: {
     type: Sequelize.STRING
   },
   city: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isEmpty: false
-    }
+    allowNull: false
   },
   state: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isEmpty: false
-    }
+    allowNull: false
   },
   zip: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      isEmpty: false
-    }
+    allowNull: false
   }
 })
 
