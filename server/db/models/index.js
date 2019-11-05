@@ -2,29 +2,38 @@ const User = require('./user')
 const Potion = require('./potions')
 const Order = require('./order')
 const Address = require('./address')
+const OrdersPotions = require('./ordersPotions')
 
-Order.belongsTo(User)
-User.hasMany(Order)
+//User will have a cartId and pastOrderId(multiple?) Ids for past orders
+//Will have setCart/getCart methods
+//Will have addPastOrder//getPastOrders
+User.belongsToMany(Order, {
+  as: 'pastOrder',
+  through: 'usersOrders',
+  foreignKey: 'userId',
+  otherKey: 'orderId'
+})
+User.belongsTo(Order, {as: 'cart'}) //only can have one cart
+Order.hasOne(User) //order should not be connected to more than one user
 
-Order.belongsToMany(Potion)
+//Order will have many potions, and will have quantity on order on the through table
+// Order will have addPotion, getPotions, removePotion, etc.
+Order.belongsToMany(Potion, {
+  through: OrdersPotions,
+  foreignKey: 'orderId',
+  otherKey: 'potionId'
+})
 Potion.hasMany(Order)
 
-Order.belongsTo(Address, {as: shippingAddress})
-Order.belongsTo(Address, {as: billingAddress})
+Order.belongsTo(Address, {as: 'shippingAddress'})
+Order.belongsTo(Address, {as: 'billingAddress'})
 
-/**
- * If we had any associations to make, this would be a great place to put them!
- * ex. if we had another model called BlogPost, we might say:
- *
- *    BlogPost.belongsTo(User)
- */
+User.belongsToMany(Address, {
+  through: 'userAddress',
+  foreignKey: 'userId',
+  otherKey: 'addressId'
+})
 
-/**
- * We'll export all of our models here, so that any time a module needs a model,
- * we can just require it from 'db/models'
- * for example, we can say: const {User} = require('../db/models')
- * instead of: const User = require('../db/models/user')
- */
 module.exports = {
   User,
   Potion,
