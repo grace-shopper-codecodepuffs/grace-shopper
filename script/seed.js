@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Potion} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
@@ -21,8 +21,34 @@ async function seed() {
       lastName: 'Meowman'
     })
   ])
+  const potions = await Promise.all([
+    Potion.create({
+      name: 'Love Me Long Time',
+      description:
+        'The most powerful love potion in existence. Do you want someone to love you forever? This is for you.',
+      quantity: 300,
+      picture:
+        'https://cdn3.iconfinder.com/data/icons/valentine-2023/595/Valentine_09-512.png',
+      price: 499.99
+    }),
+    Potion.create({
+      name: 'Jello Legs',
+      description:
+        'This hex of a potion will hobble your enemies! Do you need to run away? Throw it at them. Do you want to prank your neighbor who lives at the top floor of a 4-story-walkup? They will hate you forever!',
+      quantity: 200,
+      price: 49.99
+    }),
+    Potion.create({
+      name: 'Baby bottom skin',
+      description:
+        'Apply liberally to your face, and your skin will be smooth and perfect within 15 minutes! Only lasts for about 4 hours, so make sure to buy 4 for each day!',
+      quantity: 1000,
+      price: 9.95
+    })
+  ])
 
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${potions.length} potions`)
   console.log(`seeded successfully`)
 }
 
