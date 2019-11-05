@@ -18,11 +18,19 @@ const Potion = db.define('potion', {
         validate: {
             min: 0
         }
+        allowNull: true
     },
     picture: {
         type: Sequelize.STRING,
         default: "https://vignette.wikia.nocookie.net/tlos-huggers/images/f/fe/Images.jpeg/revision/latest?cb=20190325152050",
-        allowNull: false
+        allowNull: true
+    },
+    price:{
+        type: Sequelize.NUMBER,
+        validate: {
+            min: 0,
+        },
+        allowNull: true
     }
 })
 
