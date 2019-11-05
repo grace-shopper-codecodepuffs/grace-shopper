@@ -26,13 +26,13 @@ const Potion = db.define('potion', {
       'https://vignette.wikia.nocookie.net/tlos-huggers/images/f/fe/Images.jpeg/revision/latest?cb=20190325152050',
     allowNull: true
   },
-  price: {
-    type: Sequelize.NUMBER,
-    validate: {
-      min: 0
-    },
-    allowNull: true
-  }
+    price:{
+        type: Sequelize.FLOAT,
+        validate: {
+            min: 0,
+        },
+        allowNull: true
+    }
 })
 
 module.exports = Potion
