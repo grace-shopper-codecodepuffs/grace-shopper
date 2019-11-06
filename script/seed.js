@@ -28,7 +28,7 @@ async function seed() {
         'The most powerful love potion in existence. Do you want someone to love you forever? This is for you.',
       quantity: 300,
       picture:
-        'https://cdn3.iconfinder.com/data/icons/valentine-2023/595/Valentine_09-512.png',
+        'https://vignette.wikia.nocookie.net/shop-heroes/images/b/b6/Elven_Dew.png/revision/latest?cb=20151202220554',
       price: 499.99
     }),
     Potion.create({
@@ -36,6 +36,8 @@ async function seed() {
       description:
         'This hex of a potion will hobble your enemies! Do you need to run away? Throw it at them. Do you want to prank your neighbor who lives at the top floor of a 4-story-walkup? They will hate you forever!',
       quantity: 200,
+      picture:
+        'https://cdn1.iconfinder.com/data/icons/medieval-9/200/fire_flask_magic_potion_spell_sphere_witch-512.png',
       price: 49.99
     }),
     Potion.create({
@@ -43,6 +45,7 @@ async function seed() {
       description:
         'Apply liberally to your face, and your skin will be smooth and perfect within 15 minutes! Only lasts for about 4 hours, so make sure to buy 4 for each day!',
       quantity: 1000,
+      picture: 'https://www.freeiconspng.com/uploads/potion-icon-png-27.png',
       price: 9.95
     })
   ])

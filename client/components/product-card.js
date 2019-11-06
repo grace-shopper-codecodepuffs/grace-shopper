@@ -1,13 +1,14 @@
 import React from 'react'
 
-const ProductCard = ({name, image, description, price}) => {
+const ProductCard = ({product}) => {
+  // const product = {product}
+  console.log(product)
   return (
     <div className="product-card">
-      {console.log('in product card props', name)}
-      <img src={image} />
-      <h3 className="potion">{name}</h3>
-      <p className="description">{description}</p>
-      <h4 className="price">{price}</h4>
+      {console.log('in product card props', product.name)}
+      <img src={product.picture} />
+      <h3 className="potion">{product.name}</h3>
+      <h4 className="price">{product.price}</h4>
       <input
         type="number"
         name="product-quantity"
