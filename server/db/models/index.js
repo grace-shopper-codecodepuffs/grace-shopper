@@ -34,6 +34,10 @@ User.belongsToMany(Address, {
   otherKey: 'addressId'
 })
 
+User.afterCreate(user => {
+  user.setCart(Order.create({}))
+})
+
 module.exports = {
   User,
   Potion,
