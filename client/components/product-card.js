@@ -33,7 +33,13 @@ class ProductCard extends React.Component {
         <h3 className="potion">{this.state.name}</h3>
         <p className="description">{this.state.description}</p>
         <h4 className="price">{this.state.price}</h4>
-        <input type="number" name="product-quantity" placeholder=" Quantity" />
+        <input
+          type="number"
+          name="product-quantity"
+          placeholder=" Quantity"
+          min="0"
+          mobile
+        />
         <br />
         <button>Add To Cart</button>
       </div>
