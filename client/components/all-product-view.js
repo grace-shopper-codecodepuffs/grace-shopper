@@ -5,17 +5,22 @@ import {connect} from 'react-redux'
 import {getProducts} from '../store/products'
 
 class Potions extends Component {
-  constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
+  componentDidMount() {
+    this.props.getProducts()
   }
+
   render() {
-    console.log('hey')
-    const {potions} = this.props
+    const {products} = this.props
+    console.log('products', products)
     return (
       <div>
-        <h1>HELLO!</h1>
-        {potions.map(potion => <ProductCard props={potion} key={potion.id} />)}
+        <h1>Our Potions</h1>
+        {console.log('in product view props.products', products)}
+
+        {products.length &&
+          products.map(product => {
+            return <ProductCard key={product.id} props={product} />
+          })}
       </div>
     )
   }
