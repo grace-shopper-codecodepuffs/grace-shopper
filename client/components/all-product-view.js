@@ -15,11 +15,26 @@ class Potions extends Component {
     return (
       <div>
         <h1>Our Potions</h1>
-        {console.log('in product view props.products', products)}
 
         {products.length &&
           products.map(product => {
-            return <ProductCard key={product.id} props={product} />
+            return (
+              <div className="product-card" key={product.id}>
+                <img src={product.image} />
+                <h3 className="potion">{product.name}</h3>
+                <p className="description">{product.description}</p>
+                <h4 className="price">{product.price}</h4>
+                <input
+                  type="number"
+                  name="product-quantity"
+                  placeholder=" Quantity"
+                  min="0"
+                />
+                <br />
+                <button>Add To Cart</button>
+              </div>
+            )
+            // return <ProductCard key={product.id} props={product} />
           })}
       </div>
     )
