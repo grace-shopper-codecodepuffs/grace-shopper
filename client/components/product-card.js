@@ -16,15 +16,6 @@ class ProductCard extends React.Component {
       price: '$49.99'
     }
   }
-  // async componentDidMount() {
-  //   try {
-  //     let {data} = await axios.get('/api/potions')
-  //     this.setState({data})
-  //   }
-  //   catch {
-  //     console.log('error')
-  //   }
-  // }
 
   render() {
     return (
