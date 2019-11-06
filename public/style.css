@@ -20,6 +20,11 @@ form div {
   display: inline-block;
 }
 
+div .navbar {
+  color: blue;
+  width: 500px;
+}
+
 /* START PRODUCT CARD ON ALL PRODUCTS VIEW */
 .product-card {
   width: 360px;
