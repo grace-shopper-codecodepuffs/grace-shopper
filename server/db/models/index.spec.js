@@ -21,17 +21,11 @@ describe('index', () => {
         })
       })
 
-      it("returns Cody's cart", async () => {
-        console.log('CODY CARTTTTT', await cody.getCart())
-        expect(await cody.getCart().order.dataValues.userId).to.be.equal(
-          cody.id
-        )
-      })
-      it("cody's cart should be labeled a cart", () => {
-        expect(cody.getCart().isCart).to.be.equal(true)
-      })
-      it("should include the potionId as null initially because it's empty", () => {
-        expect(cody.getCart().potionId).to.be.equal(null)
+      it("returns Cody's cart, initially empty", async () => {
+        const cart = await cody.getCart()
+        expect(cart.userId).to.be.equal(cody.id)
+        expect(cart.isCart).to.be.equal(true)
+        expect(cart.potionId).to.be.equal(null)
       })
     })
   })
