@@ -22,16 +22,16 @@ const Potion = db.define('potion', {
   },
   picture: {
     type: Sequelize.STRING,
-    default:
+    defaultValue:
       'https://vignette.wikia.nocookie.net/tlos-huggers/images/f/fe/Images.jpeg/revision/latest?cb=20190325152050',
-    allowNull: true
+    allowNull: false
   },
   price: {
     type: Sequelize.DECIMAL(10, 2),
     validate: {
       min: 0
     },
-    allowNull: true
+    allowNull: false
   }
 })
 

@@ -4,7 +4,14 @@ const db = require('../db')
 const OrdersPotions = db.define('ordersPotions', {
   quantity: {
     type: Sequelize.INTEGER,
-    default: 1,
+    defaultValue: 1,
+    validate: {
+      min: 0
+    }
+  },
+  price: {
+    type: Sequelize.DECIMAL(10, 2),
+    allowNull: false,
     validate: {
       min: 0
     }
