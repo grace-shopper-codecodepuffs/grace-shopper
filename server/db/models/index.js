@@ -28,6 +28,15 @@ User.prototype.getCart = async function() {
   }
 }
 
+User.prototype.addToCart = async function(potion) {
+  try {
+    const cart = await this.getCart()
+    await cart.addPotion(potion)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 //Order will have many potions, and will have quantity on order on the through table
 // Order will have addPotion, getPotions, removePotion, etc.
 Order.belongsToMany(Potion, {
