@@ -1,6 +1,7 @@
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
+const {Order} = require('../models')
 
 const User = db.define('user', {
   email: {
@@ -19,6 +20,11 @@ const User = db.define('user', {
     get() {
       return () => this.getDataValue('password')
     }
+  },
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
   },
   salt: {
     type: Sequelize.STRING,

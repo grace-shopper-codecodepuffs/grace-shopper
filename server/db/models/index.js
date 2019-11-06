@@ -4,17 +4,30 @@ const Order = require('./order')
 const Address = require('./address')
 const OrdersPotions = require('./ordersPotions')
 
-//User will have a cartId and pastOrderId(multiple?) Ids for past orders
-//Will have setCart/getCart methods
-//Will have addPastOrder//getPastOrders
-User.belongsToMany(Order, {
-  as: 'pastOrder',
-  through: 'usersOrders',
-  foreignKey: 'userId',
-  otherKey: 'orderId'
+Order.belongsTo(User) //order belongs to one user with userId
+User.hasMany(Order) //user can have many orders one of which is cart
+
+User.afterCreate(user => {
+  const cart = Order.create({
+    userId: user.id
+  })
 })
-User.belongsTo(Order, {as: 'cart'}) //only can have one cart
-Order.hasOne(User) //order should not be connected to more than one user
+
+// User.prototype.getCart = async function() {
+//   try {
+//     const cart = await Order.findOne({
+//       where: {
+//         isCart: true,
+//         userId: this.id
+//       }
+//     })
+//     // console.log('CART',cart)
+//     return cart
+//   } catch (error) {
+//     console.error(error)
+//   }
+
+// }
 
 //Order will have many potions, and will have quantity on order on the through table
 // Order will have addPotion, getPotions, removePotion, etc.
@@ -25,18 +38,8 @@ Order.belongsToMany(Potion, {
 })
 Potion.hasMany(Order)
 
-Order.belongsTo(Address, {as: 'shippingAddress'})
-Order.belongsTo(Address, {as: 'billingAddress'})
-
-User.belongsToMany(Address, {
-  through: 'userAddress',
-  foreignKey: 'userId',
-  otherKey: 'addressId'
-})
-
-User.afterCreate(user => {
-  user.setCart(Order.create({}))
-})
+User.belongsTo(Address, {as: 'shippingAddress'})
+User.belongsTo(Address, {as: 'billingAddress'})
 
 module.exports = {
   User,

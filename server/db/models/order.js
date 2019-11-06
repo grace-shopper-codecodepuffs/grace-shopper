@@ -5,7 +5,7 @@ const Order = db.define('order', {
   isCart: {
     type: Sequelize.BOOLEAN,
     allowNull: true,
-    default: true
+    defaultValue: true
   },
   orderDate: {
     type: Sequelize.DATE,
