@@ -10,8 +10,7 @@ class Potions extends Component {
   }
 
   render() {
-    const {products} = this.props
-    console.log('products', products)
+    const {products} = this.props.products
     return (
       <div>
         <h1>Our Potions</h1>
