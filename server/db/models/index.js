@@ -22,16 +22,21 @@ User.prototype.getCart = async function() {
         userId: this.id
       }
     })
-    return cart.dataValues
+    // console.log(cart.dataValues)
+    return cart
   } catch (error) {
     console.error(error)
   }
 }
 
-User.prototype.addToCart = async function(potion) {
+User.prototype.addToCart = async function(potion, quantity) {
   try {
     const cart = await this.getCart()
-    await cart.addPotion(potion)
+    await cart.addPotion(potion, {
+      through: {price: potion.price, quantity: quantity}
+    })
+    console.log(cart.dataValues)
+    console.log(OrdersPotions)
   } catch (err) {
     console.error(err)
   }
