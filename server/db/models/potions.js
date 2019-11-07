@@ -31,6 +31,7 @@ const Potion = db.define('potion', {
     validate: {
       min: 0
     },
+    defaultValue: 0,
     allowNull: false
   }
 })
