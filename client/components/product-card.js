@@ -11,12 +11,7 @@ const ProductCard = ({product}) => {
         <h3 className="potion">{product.name}</h3>
       </Link>
       <h4 className="price">{product.price}</h4>
-      <input
-        type="number"
-        name="product-quantity"
-        placeholder=" Quantity"
-        min="0"
-      />
+      <input type="number" name="product-quantity" defaultValue="1" min="0" />
       <br />
       <button>Add To Cart</button>
     </div>

@@ -22,7 +22,7 @@ class SingleProduct extends Component {
           <input
             type="number"
             name="product-quantity"
-            placeholder=" Quantity"
+            defaultValue="1"
             min="0"
           />
           <br />
