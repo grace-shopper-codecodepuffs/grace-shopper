@@ -23,7 +23,8 @@ form div {
 /* HOME PAGE VIEW START */
 .homePage .fullPage {
   text-align: center;
-  background-color: lightgreen;
+  background-image: url('https://media.giphy.com/media/esjfDnpbkVPCE/giphy.gif');
+  background-size: cover;
 }
 /* HOME PAGE VIEW END */
 
