@@ -5,8 +5,10 @@ import {Link} from 'react-router-dom'
 import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <h1>Our Delicious Potions (Boilermaker nav)</h1>
+  <div className="navbar">
+    <Link to="/potions" key="potions">
+      <h1 className="title">Visit Our Potion Selection</h1>
+    </Link>
     <nav>
       {isLoggedIn ? (
         <div className="navbar">
@@ -25,7 +27,6 @@ const Navbar = ({handleClick, isLoggedIn}) => (
         </div>
       )}
     </nav>
-    <hr />
   </div>
 )
 
