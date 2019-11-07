@@ -1,6 +1,6 @@
 const {expect} = require('chai')
 const db = require('../index')
-const {User, Order, Address, Potion} = require('../models')
+const {User, Order, Address, Potion, OrdersPotions} = require('../models')
 // const { } = db.model('user')
 
 describe('index', () => {
@@ -15,41 +15,68 @@ describe('index', () => {
   describe('User Prototype Methods', () => {
     let cody
     let potion
-    beforeEach(() => {
-      cody = User.create({
+    let potion2
+    beforeEach(async () => {
+      cody = await User.create({
         email: 'marley@badtothebone.com',
         password: 'treatsforlife',
         firstName: 'Marley',
         lastName: 'Teag'
       })
-      potion = Potion.create({
+      potion = await Potion.create({
         name: 'eight hours',
         description:
           'eight hours of sleep in a bottle. Stay up all night studying? Drink eight hours, to feel refreshed, as if you had gotten a full night of sleep. WARNING: SHOULD NOT BE USED MORE THAN TWO DAYS IN A ROW. SIDE EFFECTS ARE LITERALLY BRAIN MELTING.',
         quantity: 50,
         price: 29.99
       })
+      potion2 = await Potion.create({
+        name: 'perfect eyesight',
+        description:
+          "One drop in each eye in the morning and you'll have 20/20 vision for the day! 1 bottle should last you the entire month if used correctly.",
+        quantity: 75,
+        price: 10.0
+      })
     })
-    // describe('getCart', async () => {
+    describe('getCart', () => {
+      it("returns Cody's cart, initially empty", async () => {
+        let cart = await cody.getCart()
+        cart = cart.dataValues
+        expect(cart.userId).to.be.equal(cody.id)
+        expect(cart.isCart).to.be.equal(true)
+      })
+    })
 
-    //   it("returns Cody's cart, initially empty", async () => {
-    //     const codySaved = await cody.save()
-
-    //     let cart = await codySaved.getCart()
-    //     cart = cart.dataValues
-    //     expect(cart.userId).to.be.equal(cody.id)
-    //     expect(cart.isCart).to.be.equal(true)
-    //     expect(cart.potionId).to.be.equal(null)
-    //   })
-    // })
-
-    describe('addToCart', async () => {
+    describe('addToCart', () => {
       it('adds a potion to users cart', async () => {
-        const codySaved = await cody.save()
+        await cody.addToCart(potion, 2)
+        const cart = await cody.getCart()
+        let marleysCart = await OrdersPotions.findAll({
+          where: {
+            orderId: cart.id
+          }
+        })
+        expect(marleysCart[0].dataValues.potionId).to.be.equal(potion.id)
+        expect(marleysCart[0].dataValues.quantity).to.be.equal(2)
+        expect(marleysCart[0].dataValues.price).to.be.equal(potion.price)
+      })
 
-        const potionSaved = await potion.save()
-        codySaved.addToCart(potionSaved, 2)
-        expect(codySaved.getCart().potionId).to.not.equal(null)
+      it('can have multiple potions in cart', async () => {
+        await cody.addToCart(potion, 2)
+        await cody.addToCart(potion2, 4)
+
+        const cart = await cody.getCart()
+        let marleysCart = await OrdersPotions.findAll({
+          where: {
+            orderId: cart.id
+          }
+        })
+        expect(marleysCart[0].dataValues.potionId).to.be.equal(potion.id)
+        expect(marleysCart[1].dataValues.potionId).to.be.equal(potion2.id)
+        expect(marleysCart[0].dataValues.quantity).to.be.equal(2)
+        expect(marleysCart[1].dataValues.quantity).to.be.equal(4)
+        expect(marleysCart[0].dataValues.price).to.be.equal(potion.price)
+        expect(marleysCart[1].dataValues.price).to.be.equal(potion2.price)
       })
     })
   })

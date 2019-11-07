@@ -22,7 +22,6 @@ User.prototype.getCart = async function() {
         userId: this.id
       }
     })
-    // console.log(cart.dataValues)
     return cart
   } catch (error) {
     console.error(error)
@@ -35,8 +34,17 @@ User.prototype.addToCart = async function(potion, quantity) {
     await cart.addPotion(potion, {
       through: {price: potion.price, quantity: quantity}
     })
-    console.log(cart.dataValues)
-    console.log(OrdersPotions)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+User.prototype.removeFromCart = async function(potion) {
+  try {
+    const cart = await this.getCart()
+    await cart.removePotion(potion, {
+      through: {price: potion.price, quantity: quantity}
+    })
   } catch (err) {
     console.error(err)
   }
@@ -45,11 +53,11 @@ User.prototype.addToCart = async function(potion, quantity) {
 //Order will have many potions, and will have quantity on order on the through table
 // Order will have addPotion, getPotions, removePotion, etc.
 Order.belongsToMany(Potion, {
-  through: OrdersPotions,
-  foreignKey: 'orderId',
-  otherKey: 'potionId'
+  through: OrdersPotions
 })
-Potion.hasMany(Order)
+Potion.belongsToMany(Order, {
+  through: OrdersPotions
+})
 
 User.belongsTo(Address, {as: 'shippingAddress'})
 User.belongsTo(Address, {as: 'billingAddress'})
@@ -58,5 +66,6 @@ module.exports = {
   User,
   Potion,
   Address,
-  Order
+  Order,
+  OrdersPotions
 }
