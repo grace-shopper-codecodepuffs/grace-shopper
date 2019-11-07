@@ -29,7 +29,7 @@ class Routes extends Component {
         <Route exact path="/homepage" component={HomePage} />
         <Route exact path="/potions" component={Potions} />
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/users/signup" component={Signup} />
         <Route path="/potions/:potionId" component={SingleProduct} />
         {isLoggedIn && (
           <Switch>
