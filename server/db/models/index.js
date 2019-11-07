@@ -48,6 +48,38 @@ User.prototype.removeFromCart = async function(potion) {
   }
 }
 
+User.prototype.editPotionCartQuantity = async function(potion, newQuantity) {
+  try {
+    const cart = await this.getCart()
+    const potionToUpdate = await OrdersPotions.findOne({
+      where: {
+        orderId: cart.id,
+        potionId: potion.id
+      }
+    })
+
+    await potionToUpdate.update({
+      quantity: newQuantity
+    })
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+User.prototype.getPotionsInCart = async function() {
+  try {
+    const cart = await this.getCart()
+    const allPotions = await OrdersPotions.findAll({
+      where: {
+        orderId: cart.id
+      }
+    })
+    return allPotions
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 //Order will have many potions, and will have quantity on order on the through table
 // Order will have addPotion, getPotions, removePotion, etc.
 Order.belongsToMany(Potion, {

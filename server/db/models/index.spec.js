@@ -109,5 +109,22 @@ describe('index', () => {
         expect(potionsInCart[0].potionId).to.be.equal(potion2.id)
       })
     })
+
+    describe('editPotionCartQuantity', () => {
+      it('edits quantity of a product in users cart', async () => {
+        await cody.addToCart(potion, 2)
+        await cody.editPotionCartQuantity(potion, 1)
+
+        const cart = await cody.getCart()
+
+        const potionsInCart = await OrdersPotions.findOne({
+          where: {
+            orderId: cart.id,
+            potionId: potion.id
+          }
+        })
+        expect(potionsInCart.dataValues.quantity).to.be.equal(1)
+      })
+    })
   })
 })
