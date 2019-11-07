@@ -20,10 +20,24 @@ form div {
   display: inline-block;
 }
 
-div .navbar {
-  color: blue;
-  width: 500px;
+/* HOME PAGE VIEW START */
+.homePage .fullPage {
+  text-align: center;
+  background-color: lightgreen;
 }
+/* HOME PAGE VIEW END */
+
+/* NAV BAR VIEW START */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar .title {
+  color: forestgreen;
+  font-family: cursive;
+}
+/* NAV BAR VIEW END */
 
 /* START PRODUCT CARD ON ALL PRODUCTS VIEW */
 .product-card {
