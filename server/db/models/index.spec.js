@@ -79,5 +79,35 @@ describe('index', () => {
         expect(marleysCart[1].dataValues.price).to.be.equal(potion2.price)
       })
     })
+
+    describe('removeFromCart', () => {
+      it('removes a product from users cart', async () => {
+        await cody.addToCart(potion, 2)
+        await cody.removeFromCart(potion)
+
+        const cart = await cody.getCart()
+        const potionsInCart = await OrdersPotions.findAll({
+          where: {
+            orderId: cart.id
+          }
+        })
+        expect(potionsInCart.length).to.be.equal(0)
+      })
+
+      it('removes the correct product from users cart', async () => {
+        await cody.addToCart(potion, 2)
+        await cody.addToCart(potion2, 5)
+        await cody.removeFromCart(potion)
+
+        const cart = await cody.getCart()
+        const potionsInCart = await OrdersPotions.findAll({
+          where: {
+            orderId: cart.id
+          }
+        })
+        expect(potionsInCart.length).to.be.equal(1)
+        expect(potionsInCart[0].potionId).to.be.equal(potion2.id)
+      })
+    })
   })
 })

@@ -42,9 +42,7 @@ User.prototype.addToCart = async function(potion, quantity) {
 User.prototype.removeFromCart = async function(potion) {
   try {
     const cart = await this.getCart()
-    await cart.removePotion(potion, {
-      through: {price: potion.price, quantity: quantity}
-    })
+    await cart.removePotion(potion)
   } catch (err) {
     console.error(err)
   }
