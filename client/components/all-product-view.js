@@ -10,8 +10,7 @@ class Potions extends Component {
   }
 
   render() {
-    const {products} = this.props
-    console.log('products', products)
+    const {products} = this.props.products
     return (
       <div>
         <h1>Our Potions</h1>
@@ -19,22 +18,23 @@ class Potions extends Component {
         {products.length &&
           products.map(product => {
             return (
-              <div className="product-card" key={product.id}>
-                <img src={product.image} />
-                <h3 className="potion">{product.name}</h3>
-                <p className="description">{product.description}</p>
-                <h4 className="price">{product.price}</h4>
-                <input
-                  type="number"
-                  name="product-quantity"
-                  placeholder=" Quantity"
-                  min="0"
-                />
-                <br />
-                <button>Add To Cart</button>
-              </div>
+              //   <div className="product-card" key={product.id}>
+              //     <img src={product.image} />
+              //     <h3 className="potion">{product.name}</h3>
+              //     <p className="description">{product.description}</p>
+              //     <h4 className="price">{product.price}</h4>
+              //     <input
+              //       type="number"
+              //       name="product-quantity"
+              //       placeholder=" Quantity"
+              //       min="0"
+              //     />
+              //     <br />
+              //     <button>Add To Cart</button>
+              //   </div>
+              // )
+              <ProductCard key={product.id} product={product} />
             )
-            // return <ProductCard key={product.id} props={product} />
           })}
       </div>
     )

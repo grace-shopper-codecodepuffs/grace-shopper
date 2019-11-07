@@ -34,7 +34,6 @@ export const gotAProduct = aProduct => ({
 export const getAProduct = productId => async dispatch => {
   try {
     const {data} = await axios.get(`/api/potions/${productId}`)
-    console.log('in data thunk', data)
     dispatch(gotAProduct(data))
   } catch (error) {
     console.error(error)

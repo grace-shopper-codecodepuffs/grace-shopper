@@ -1,13 +1,16 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
-const ProductCard = ({name, image, description, price}) => {
+const ProductCard = ({product}) => {
+  const linkTo = `/potions/${product.id}`
+
   return (
     <div className="product-card">
-      {console.log('in product card props', name)}
-      <img src={image} />
-      <h3 className="potion">{name}</h3>
-      <p className="description">{description}</p>
-      <h4 className="price">{price}</h4>
+      <Link to={linkTo}>
+        <img src={product.picture} />
+        <h3 className="potion">{product.name}</h3>
+      </Link>
+      <h4 className="price">{product.price}</h4>
       <input
         type="number"
         name="product-quantity"
