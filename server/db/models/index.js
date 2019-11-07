@@ -80,6 +80,20 @@ User.prototype.getPotionsInCart = async function() {
   }
 }
 
+User.prototype.getCartTotal = async function() {
+  try {
+    const allPotionsInCart = await this.getPotionsInCart()
+
+    const total = allPotionsInCart.reduce((accum, potion) => {
+      const currPotion = potion.dataValues.quantity * potion.dataValues.price
+      return accum + currPotion
+    }, 0)
+    return Math.round(total * 100) / 100
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 //Order will have many potions, and will have quantity on order on the through table
 // Order will have addPotion, getPotions, removePotion, etc.
 Order.belongsToMany(Potion, {

@@ -126,5 +126,15 @@ describe('index', () => {
         expect(potionsInCart.dataValues.quantity).to.be.equal(1)
       })
     })
+
+    describe('getCartTotal', () => {
+      it('get total of cart', async () => {
+        await cody.addToCart(potion, 2)
+        await cody.addToCart(potion2, 4)
+        const cartTotal = await cody.getCartTotal()
+
+        expect(cartTotal).to.be.equal(99.98)
+      })
+    })
   })
 })
