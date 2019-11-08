@@ -18,7 +18,6 @@ const defaultUser = {}
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
-const createUser = user => ({type: CREATE_USER, user})
 
 /**
  * THUNK CREATORS
@@ -29,15 +28,6 @@ export const me = () => async dispatch => {
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
-  }
-}
-
-export const createdUser = user => async dispatch => {
-  try {
-    const {data} = await axios.post('/api/users/signup', user)
-    dispatch(createUser(data))
-  } catch (error) {
-    console.log('this user cannot be created because ', error)
   }
 }
 
@@ -76,8 +66,6 @@ export default function(state = defaultUser, action) {
       return action.user
     case REMOVE_USER:
       return defaultUser
-    case CREATE_USER:
-      return {...state, user: action.user}
     default:
       return state
   }
