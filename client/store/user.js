@@ -7,11 +7,11 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const CREATE_USER = 'CREATE_USER'
-const GOT_CART = 'GET_CART'
-const ADDED_TO_CART = 'ADD_TO_CART'
-const REMOVED_FROM_CART = 'REMOVE_FROM_CART'
-const INCREASED_QTY = 'INCREASE_QTY'
-const DECREASED_QTY = 'DECREASE_QTY'
+const GOT_CART = 'GOT_CART'
+const ADDED_TO_CART = 'ADDED_TO_CART'
+const REMOVED_FROM_CART = 'REMOVED_FROM_CART'
+const INCREASED_QTY = 'INCREASED_QTY'
+const DECREASED_QTY = 'DECREASED_QTY'
 
 /**
  * INITIAL STATE
@@ -34,8 +34,10 @@ const addedToCart = product => ({type: ADDED_TO_CART, product})
  */
 
 export const addToCart = product => async dispatch => {
+  console.log('productId being given to axios', product)
   try {
-    const {res} = await axios.post(`/api/user/${userId}/cart`, product)
+    const {res} = await axios.post(`/api/user/${product.id}/cart`, product)
+    console.log('axios response', res)
     dispatch(addedToCart(res))
   } catch (err) {
     console.error(err)
