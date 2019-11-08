@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import {auth, createdUser} from '../store'
+import {auth} from '../store'
+import {Link} from 'react-router-dom'
 
 /**
  * COMPONENT
@@ -14,7 +15,7 @@ import {auth, createdUser} from '../store'
 //   error: PropTypes.object
 // }
 
-class AuthForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,7 +28,9 @@ class AuthForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   // const {name, displayName, handleSubmit, error} = props
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.auth()
+  }
 
   handleChange(evt) {
     console.log(evt)
@@ -36,7 +39,7 @@ class AuthForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault()
-
+    this.props.auth(this.state)
     this.setState({
       firstName: '',
       lastName: '',
@@ -121,28 +124,14 @@ const mapLogin = state => {
   }
 }
 
-const mapSignup = state => {
-  return {
-    name: 'signup',
-    displayName: 'Sign Up',
-    error: state.user.error
-  }
-}
-
 const mapDispatch = dispatch => ({
   // const formName = evt.target.name
   // const firstName = evt.target.firstName.value
   // const lastName = evt.target.lastName.value
   // const email = evt.target.email.value
   // const password = evt.target.password.value
-  // dispatch(auth(firstName, lastName, email, password, formName))
-  createdUser: user => dispatch(createdUser(user))
+  auth: user => dispatch(auth(user))
   // dispatch(createdUser(firstName, lastName, email, password, formName))
 })
 
-export const Login = connect(mapLogin, mapDispatch)(AuthForm)
-export const Signup = connect(mapSignup, mapDispatch)(AuthForm)
-
-/**
- * PROP TYPES
- */
+export const Login = connect(mapLogin, mapDispatch)(LoginForm)
