@@ -60,15 +60,6 @@ export const me = () => async dispatch => {
   }
 }
 
-export const createdUser = user => async dispatch => {
-  try {
-    const {data} = await axios.post('/api/users/signup', user)
-    dispatch(createUser(data))
-  } catch (error) {
-    console.log('this user cannot be created because ', error)
-  }
-}
-
 export const auth = (email, password, method) => async dispatch => {
   let res
   try {
