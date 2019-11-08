@@ -21,7 +21,7 @@ form div {
 }
 
 /* HOME PAGE VIEW START */
-.homePage .fullPage {
+.homePage {
   text-align: center;
   background-image: url('https://media.giphy.com/media/esjfDnpbkVPCE/giphy.gif');
   background-size: cover;
@@ -38,9 +38,17 @@ form div {
   color: forestgreen;
   font-family: cursive;
 }
+
+.navbar img {
+  background-color: blue;
+  max-width: 35px;
+  height: 35px;
+  border-radius: 4px;
+}
 /* NAV BAR VIEW END */
 
 /* START PRODUCT CARD ON ALL PRODUCTS VIEW */
+
 .product-card {
   width: 360px;
   text-align: center;
