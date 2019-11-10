@@ -25,28 +25,27 @@ const defaultUser = {
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const gotCart = currentCart => ({type: GOT_CART, currentCart})
-const addedToCart = (product, quantity) => ({
+const addedToCart = newCart => ({
   type: ADDED_TO_CART,
-  product,
-  quantity
+  newCart
 })
 
 /**
  * THUNK CREATORS
  */
 
-
 export const addToCart = (product, quantity) => async (dispatch, getState) => {
   try {
     let state = getState()
     if (state.user.id) {
-      const {data} = await axios.post(
-        `/api/user/${state.user.id}/cart`,
-        product
-      )
+      const {data} = await axios.post(`/api/user/${state.user.id}/cart`, {
+        product,
+        quantity
+      })
       dispatch(addedToCart(data))
     } else {
       dispatch(addedToCart(product))
+      //won't work need to get current cart from local State and add product to it and send newCart
     }
   } catch (err) {
     console.error(err)
@@ -116,7 +115,7 @@ export default function(state = defaultUser, action) {
     case GOT_CART:
       return {...state, currentCart: action.currentCart}
     case ADDED_TO_CART:
-      return {...state, currentCart: [...state.currentCart, action.product]}
+      return {...state, currentCart: action.newCart}
     default:
       return state
   }
