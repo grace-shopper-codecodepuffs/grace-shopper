@@ -32,12 +32,9 @@ User.prototype.addToCart = async function(potionId, quantity) {
   try {
     const cart = await this.getCart()
     const potion = await Potion.findByPk(potionId)
-    // console.log('cart in user method>>>>', cart)
-    // console.log('potion returned in user method>>>>', potion.dataValues)
     await cart.addPotion(potion, {
       through: {price: potion.price, quantity: quantity}
     })
-    // console.log('cart in user method>>>>', cart)
   } catch (err) {
     console.error(err)
   }
@@ -78,7 +75,6 @@ User.prototype.getPotionsInCart = async function() {
         orderId: cart.id
       }
     })
-    console.log('allPotions ', allPotions)
     return allPotions
   } catch (err) {
     console.error(err)

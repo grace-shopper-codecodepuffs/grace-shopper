@@ -19,13 +19,9 @@ class SingleProduct extends Component {
 
   handleClick(event) {
     event.preventDefault()
-    this.props.addToCart(
-      this.props.aProduct,
-      this.props.userId,
-      this.state.quantity
-    )
+    this.props.addToCart(this.props.aProduct, this.state.quantity)
     this.setState({
-      quantity: null
+      quantity: 0
     })
   }
 
@@ -63,14 +59,12 @@ class SingleProduct extends Component {
 }
 
 const mapStateToProps = state => ({
-  aProduct: state.products.aProduct,
-  userId: state.user.userId
+  aProduct: state.products.aProduct
 })
 
 const mapDispathToProps = dispatch => ({
   getAProduct: potionId => dispatch(getAProduct(potionId)),
-  addToCart: (potion, userId, quantity) =>
-    dispatch(addToCart(potion, userId, quantity))
+  addToCart: (potion, quantity) => dispatch(addToCart(potion, quantity))
 })
 
 export default connect(mapStateToProps, mapDispathToProps)(SingleProduct)
