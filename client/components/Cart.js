@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getCart} from '../store/user'
+import ProductCard from './product-card'
 
 class Cart extends Component {
   constructor(props) {
@@ -13,7 +14,10 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        <h1>Hello!</h1>
+        <h1>This is Your Cart!</h1>
+        {this.props.currentCart.map(item => (
+          <ProductCard key={item.id} product={item} />
+        ))}
       </div>
     )
   }

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import ProductCard from './product-card'
-import store from '../store'
 import {connect} from 'react-redux'
 import {getProducts} from '../store/products'
 

@@ -1,7 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Routes} from '../../client/routes'
-import {Potions} from '../components/all-product-view'
 
 const HomePage = () => {
   return (
