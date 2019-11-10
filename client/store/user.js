@@ -35,8 +35,8 @@ const addedToCart = product => ({type: ADDED_TO_CART, product})
 
 export const addToCart = product => async dispatch => {
   try {
-    const {res} = await axios.post(`/api/user/${userId}/cart`, product)
-    dispatch(addedToCart(res))
+    const {data} = await axios.post(`/api/user/${userId}/cart`, product)
+    dispatch(addedToCart(data))
   } catch (err) {
     console.error(err)
   }
@@ -44,8 +44,8 @@ export const addToCart = product => async dispatch => {
 
 export const getCart = userId => async dispatch => {
   try {
-    const {res} = await axios.get(`/api/user/${userId}/cart`)
-    dispatch(gotCart(res))
+    const {data} = await axios.get(`/api/user/${userId}/cart`)
+    dispatch(gotCart(data))
   } catch (err) {
     console.error(err)
   }
