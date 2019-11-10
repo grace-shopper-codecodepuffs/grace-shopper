@@ -34,8 +34,7 @@ const middleware = composeWithDevTools(
 
 const persistedState = {
   user: {
-    currentCart: loadFromLocalStorage(),
-    isLoggedIn: false
+    currentCart: loadFromLocalStorage()
   },
   products: {
     products: [],
