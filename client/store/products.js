@@ -49,7 +49,6 @@ export default function(state = initialState, action) {
         products: action.products
       }
     case GOT_A_PRODUCT:
-      console.log('in reducer: state>>', state)
       return {
         ...state,
         aProduct: action.aProduct

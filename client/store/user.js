@@ -25,13 +25,18 @@ const defaultUser = {
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const gotCart = currentCart => ({type: GOT_CART, currentCart})
-const addedToCart = product => ({type: ADDED_TO_CART, product})
+const addedToCart = (product, quantity) => ({
+  type: ADDED_TO_CART,
+  product,
+  quantity
+})
 
 /**
  * THUNK CREATORS
  */
 
-export const addToCart = product => async (dispatch, getState) => {
+
+export const addToCart = (product, quantity) => async (dispatch, getState) => {
   try {
     let state = getState()
     if (state.user.id) {
