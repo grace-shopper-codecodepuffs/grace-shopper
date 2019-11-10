@@ -10,8 +10,7 @@ const CREATE_USER = 'CREATE_USER'
 const GOT_CART = 'GET_CART'
 const ADDED_TO_CART = 'ADD_TO_CART'
 const REMOVED_FROM_CART = 'REMOVE_FROM_CART'
-const INCREASED_QTY = 'INCREASE_QTY'
-const DECREASED_QTY = 'DECREASE_QTY'
+const EDIT_QTY = 'EDIT_QTY'
 
 /**
  * INITIAL STATE
@@ -25,7 +24,6 @@ const defaultUser = {
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
-const createUser = user => ({type: CREATE_USER, user})
 const gotCart = currentCart => ({type: GOT_CART, currentCart})
 const addedToCart = product => ({type: ADDED_TO_CART, product})
 
