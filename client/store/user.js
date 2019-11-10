@@ -34,6 +34,7 @@ const addedToCart = product => ({type: ADDED_TO_CART, product})
 export const addToCart = product => async dispatch => {
   try {
     const {data} = await axios.post(`/api/user/${userId}/cart`, product)
+    console.log('data in thunk>>>>', data)
     dispatch(addedToCart(data))
   } catch (err) {
     console.error(err)

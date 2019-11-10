@@ -1,10 +1,21 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getAProduct} from '../store/products'
+import {addToCart} from '../store/user'
 
 class SingleProduct extends Component {
   componentDidMount() {
     this.props.getAProduct(this.props.match.params.potionId)
+  }
+  // handleChange(event) {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
+
+  handleSubmit(event) {
+    console.log(event.defaultValue)
+    event.preventDefault()
   }
 
   render() {
@@ -38,7 +49,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispathToProps = dispatch => ({
-  getAProduct: potionId => dispatch(getAProduct(potionId))
+  getAProduct: potionId => dispatch(getAProduct(potionId)),
+  addToCart: potionId => dispatch(addToCart(potionId))
 })
 
 export default connect(mapStateToProps, mapDispathToProps)(SingleProduct)
