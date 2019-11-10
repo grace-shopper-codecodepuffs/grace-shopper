@@ -16,6 +16,7 @@ const EDIT_QTY = 'EDIT_QTY'
  * INITIAL STATE
  */
 const defaultUser = {
+  userId: 1,
   currentCart: []
 }
 
@@ -25,16 +26,19 @@ const defaultUser = {
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 const gotCart = currentCart => ({type: GOT_CART, currentCart})
-const addedToCart = product => ({type: ADDED_TO_CART, product})
+const addedToCart = (product, quantity) => ({
+  type: ADDED_TO_CART,
+  product,
+  quantity
+})
 
 /**
  * THUNK CREATORS
  */
 
-export const addToCart = product => async dispatch => {
+export const addToCart = (product, userId, quantity) => async dispatch => {
   try {
     const {data} = await axios.post(`/api/user/${userId}/cart`, product)
-    console.log('data in thunk>>>>', data)
     dispatch(addedToCart(data))
   } catch (err) {
     console.error(err)
@@ -44,6 +48,7 @@ export const addToCart = product => async dispatch => {
 export const getCart = userId => async dispatch => {
   try {
     const {data} = await axios.get(`/api/user/${userId}/cart`)
+    console.log('data thunk>>>', data)
     dispatch(gotCart(data))
   } catch (err) {
     console.error(err)
@@ -99,7 +104,8 @@ export default function(state = defaultUser, action) {
     case GOT_CART:
       return {...state, currentCart: action.currentCart}
     case ADDED_TO_CART:
-      return {...state, currentCart: [...state.currentCart, action.currentCart]}
+      console.log(state)
+      return {...state, currentCart: [...state.currentCart, action.product]}
     default:
       return state
   }

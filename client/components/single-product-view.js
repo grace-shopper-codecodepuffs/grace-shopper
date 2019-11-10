@@ -4,18 +4,35 @@ import {getAProduct} from '../store/products'
 import {addToCart} from '../store/user'
 
 class SingleProduct extends Component {
+  constructor() {
+    super()
+    this.state = {
+      quantity: 0
+    }
+
+    this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
   componentDidMount() {
     this.props.getAProduct(this.props.match.params.potionId)
   }
-  // handleChange(event) {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
 
-  handleSubmit(event) {
-    console.log(event.defaultValue)
+  handleClick(event) {
     event.preventDefault()
+    this.props.addToCart(
+      this.props.aProduct,
+      this.props.userId,
+      this.state.quantity
+    )
+    this.setState({
+      quantity: null
+    })
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   render() {
@@ -31,13 +48,14 @@ class SingleProduct extends Component {
           <p>{product.description}</p>
           <h3>$ {product.price}</h3>
           <input
+            onChange={this.handleChange}
             type="number"
-            name="product-quantity"
+            name="quantity"
             defaultValue="1"
             min="0"
           />
           <br />
-          <button>Add To Cart</button>
+          <button onClick={this.handleClick}>Add To Cart</button>
         </div>
       </div>
     )
@@ -45,12 +63,14 @@ class SingleProduct extends Component {
 }
 
 const mapStateToProps = state => ({
-  aProduct: state.products.aProduct
+  aProduct: state.products.aProduct,
+  userId: state.user.userId
 })
 
 const mapDispathToProps = dispatch => ({
   getAProduct: potionId => dispatch(getAProduct(potionId)),
-  addToCart: potionId => dispatch(addToCart(potionId))
+  addToCart: (potion, userId, quantity) =>
+    dispatch(addToCart(potion, userId, quantity))
 })
 
 export default connect(mapStateToProps, mapDispathToProps)(SingleProduct)

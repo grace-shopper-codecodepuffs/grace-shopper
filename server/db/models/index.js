@@ -78,6 +78,7 @@ User.prototype.getPotionsInCart = async function() {
         orderId: cart.id
       }
     })
+    console.log('allPotions ', allPotions)
     return allPotions
   } catch (err) {
     console.error(err)
