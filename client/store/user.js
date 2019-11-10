@@ -34,10 +34,10 @@ const addedToCart = product => ({type: ADDED_TO_CART, product})
  */
 
 export const addToCart = product => async dispatch => {
-  console.log('productId being given to axios', product)
+  // console.log('productId being given to axios', product)
   try {
     const {res} = await axios.post(`/api/user/${product.id}/cart`, product)
-    console.log('axios response', res)
+    // console.log('axios response', res)
     dispatch(addedToCart(res))
   } catch (err) {
     console.error(err)
