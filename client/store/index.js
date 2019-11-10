@@ -5,6 +5,25 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import products from './products'
 
+function saveToLocalStorage(state) {
+  try {
+    const serializedUserCart = JSON.stringify(state.user.currentCart)
+    localStorage.setItem('cart', serializedUserCart)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const serializedState = localStorage.getItem('cart')
+    if (serializedState === null) return undefined
+    return JSON.parse(serializedState)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 const reducer = combineReducers({
   user,
   products
@@ -12,7 +31,21 @@ const reducer = combineReducers({
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
-export const store = createStore(reducer, middleware)
+
+const persistedState = {
+  user: {
+    currentCart: loadFromLocalStorage(),
+    isLoggedIn: false
+  },
+  products: {
+    products: [],
+    aProduct: {}
+  }
+}
+
+export const store = createStore(reducer, persistedState, middleware)
+
+store.subscribe(() => saveToLocalStorage(store.getState()))
 
 export default reducer
 export * from './user'

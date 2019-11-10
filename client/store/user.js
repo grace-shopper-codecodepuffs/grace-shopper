@@ -35,19 +35,33 @@ const addedToCart = (product, quantity) => ({
  * THUNK CREATORS
  */
 
-export const addToCart = (product, quantity) => async dispatch => {
+
+export const addToCart = (product, quantity) => async (dispatch, getState) => {
   try {
-    const {data} = await axios.post(`/api/user/${userId}/cart`, product)
-    dispatch(addedToCart(data))
+    let state = getState()
+    if (state.user.id) {
+      const {data} = await axios.post(
+        `/api/user/${state.user.id}/cart`,
+        product
+      )
+      dispatch(addedToCart(data))
+    } else {
+      dispatch(addedToCart(product))
+    }
   } catch (err) {
     console.error(err)
   }
 }
 
-export const getCart = userId => async dispatch => {
+export const getCart = () => async (dispatch, getState) => {
   try {
-    const {data} = await axios.get(`/api/user/${userId}/cart`)
-    dispatch(gotCart(data))
+    let state = getState()
+    if (state.user.id) {
+      const {data} = await axios.get(`/api/user/${state.user.id}/cart`)
+      dispatch(gotCart(data))
+    } else {
+      dispatch(JSON.parse(localStorage.getItem('cart')))
+    }
   } catch (err) {
     console.error(err)
   }

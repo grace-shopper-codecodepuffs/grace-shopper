@@ -13,7 +13,7 @@ const ProductCard = ({product}) => {
       <h4 className="price">{product.price}</h4>
       <input type="number" name="product-quantity" defaultValue="1" min="0" />
       <br />
-      <button>Add To Cart</button>
+      <button type="submit">Add To Cart</button>
     </div>
   )
 }
