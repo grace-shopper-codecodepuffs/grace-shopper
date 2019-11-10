@@ -7,21 +7,48 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const CREATE_USER = 'CREATE_USER'
+const GOT_CART = 'GET_CART'
+const ADDED_TO_CART = 'ADD_TO_CART'
+const REMOVED_FROM_CART = 'REMOVE_FROM_CART'
+const EDIT_QTY = 'EDIT_QTY'
 
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {
+  currentCart: []
+}
 
 /**
  * ACTION CREATORS
  */
 const getUser = user => ({type: GET_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
+const gotCart = currentCart => ({type: GOT_CART, currentCart})
+const addedToCart = product => ({type: ADDED_TO_CART, product})
 
 /**
  * THUNK CREATORS
  */
+
+export const addToCart = product => async dispatch => {
+  try {
+    const {data} = await axios.post(`/api/user/${userId}/cart`, product)
+    dispatch(addedToCart(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+export const getCart = userId => async dispatch => {
+  try {
+    const {data} = await axios.get(`/api/user/${userId}/cart`)
+    dispatch(gotCart(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
@@ -66,6 +93,12 @@ export default function(state = defaultUser, action) {
       return action.user
     case REMOVE_USER:
       return defaultUser
+    case CREATE_USER:
+      return {...state, user: action.user}
+    case GOT_CART:
+      return {...state, currentCart: action.currentCart}
+    case ADDED_TO_CART:
+      return {...state, currentCart: [...state.currentCart, action.currentCart]}
     default:
       return state
   }
