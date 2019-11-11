@@ -45,6 +45,7 @@ export const removeFromCart = product => async (dispatch, getState) => {
       await axios.delete(`/api/user/${state.user.id}/cart/${product.potionId}`)
       dispatch(removedFromCart(product))
     } else {
+      console.log('product in thunk:', product)
       dispatch(removedFromCart(product))
     }
   } catch (err) {
@@ -69,7 +70,7 @@ export const addToCart = (product, quantity) => async (dispatch, getState) => {
         cart[itemInd].price = product.price
       } else {
         cart.push({
-          productId: product.id,
+          potionId: product.id,
           quantity: quantity,
           price: product.price
         })
@@ -89,7 +90,7 @@ export const getCart = () => async (dispatch, getState) => {
       const {data} = await axios.get(`/api/user/${state.user.id}/cart`)
       dispatch(gotCart(data))
     } else {
-      dispatch(JSON.parse(localStorage.getItem('cart')))
+      dispatch(gotCart(JSON.parse(localStorage.getItem('cart'))))
     }
   } catch (err) {
     console.error(err)
