@@ -21,7 +21,7 @@ class SingleProduct extends Component {
     event.preventDefault()
     this.props.addToCart(this.props.aProduct, this.state.quantity)
     this.setState({
-      quantity: 0
+      quantity: 1
     })
   }
 
@@ -51,7 +51,9 @@ class SingleProduct extends Component {
             min="0"
           />
           <br />
-          <button onClick={this.handleClick}>Add To Cart</button>
+          <button type="submit" onClick={this.handleClick}>
+            Add To Cart
+          </button>
         </div>
       </div>
     )

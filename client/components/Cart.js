@@ -1,18 +1,24 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getCart} from '../store/user'
+
+import {getCart, removeFromCart} from '../store/user'
 import ProductInCart from './ProductInCart'
 import {getProducts} from '../store/products'
 
 class Cart extends Component {
   constructor(props) {
-    console.log('props', props)
     super(props)
+    this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
     this.props.getCart()
     this.props.getProducts()
   }
+
+  handleClick(event) {
+    this.props.removeFromCart(event)
+  }
+
   render() {
     return (
       <div>
@@ -48,6 +54,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(getProducts()),
+  removeFromCart: product => dispatch(removeFromCart(product)),
   getCart: () => dispatch(getCart())
 })
 

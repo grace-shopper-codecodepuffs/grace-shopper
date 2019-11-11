@@ -9,6 +9,9 @@ const ProductInCart = ({itemFromCart, potion}) => (
       <p>{potion.description}</p>
       <p>{itemFromCart.quantity}</p>
       <p>{itemFromCart.price}</p>
+      {/* <button type="button" onClick={() => this.handleClick(item)}>
+                x Remove
+      </button> */}
     </div>
     <br />
   </div>
