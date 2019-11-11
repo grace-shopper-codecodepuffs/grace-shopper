@@ -16,7 +16,8 @@ const EDIT_QTY = 'EDIT_QTY'
  * INITIAL STATE
  */
 const defaultUser = {
-  currentCart: JSON.parse(localStorage.getItem('cart')) || []
+  // currentCart: JSON.parse(localStorage.getItem('cart')) || []
+  currentCart: {}
 }
 
 /**

@@ -2,30 +2,26 @@ import React, {Component} from 'react'
 import ProductCard from './product-card'
 import {connect} from 'react-redux'
 import {getProducts} from '../store/products'
+import {addToCart} from '../store/user'
 
 class Potions extends Component {
-  constructor() {
-    super()
-    this.state = {}
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-  }
-
   componentDidMount() {
     this.props.getProducts()
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
+  // handleChange(event) {
+  //   this.setState({
+  //     [event.target.name]: event.target.value
+  //   })
+  // }
 
-  handleSubmit(event) {
-    event.preventDefault()
-    this.props.addToCart(this.props.aProduct, this.state.quantity)
-    this.setState({})
-  }
+  // handleClick(event) {
+  //   event.preventDefault()
+  //   this.props.addToCart(this.props.aProduct, this.state.quantity)
+  //   this.setState({
+  //     quantity:1
+  //   })
+  // }
 
   render() {
     const {products} = this.props.products
@@ -33,10 +29,13 @@ class Potions extends Component {
       <div>
         <h1>Our Potions</h1>
         <div className="potion-list">
-          {/* {products.length &&
+          {products.length &&
             products.map(product => {
-              return <ProductCard key={product.id} product={product} onClick={() => this.props.addToCart(product, quantity)}
-            })} */}
+              return (
+                // console.log('??????')
+                <ProductCard key={product.id} product={product} />
+              )
+            })}
         </div>
       </div>
     )
@@ -48,7 +47,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getProducts: () => dispatch(getProducts())
+  getProducts: () => dispatch(getProducts()),
+  addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Potions)
