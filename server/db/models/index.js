@@ -31,7 +31,7 @@ User.prototype.getCart = async function() {
 User.prototype.addToCart = async function(potionId, quantity) {
   try {
     const cart = await this.getCart()
-    const potion = await Potion.findByPk(potionId)
+    const potion = await Potion.findByPk(potionId.id)
     await cart.addPotion(potion, {
       through: {price: potion.price, quantity: quantity}
     })
