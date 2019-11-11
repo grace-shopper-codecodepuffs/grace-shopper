@@ -16,7 +16,7 @@ const EDIT_QTY = 'EDIT_QTY'
  * INITIAL STATE
  */
 const defaultUser = {
-  currentCart: []
+  currentCart: JSON.parse(localStorage.getItem('cart')) || []
 }
 
 /**
@@ -44,7 +44,19 @@ export const addToCart = (product, quantity) => async (dispatch, getState) => {
       })
       dispatch(addedToCart(data))
     } else {
-      dispatch(addedToCart(product))
+      let cart = JSON.parse(localStorage.getItem('cart'))
+      const itemInd = cart.findIndex(item => item.productId === product.id)
+      if (itemInd >= 0) {
+        cart[itemInd].quantity = Number(quantity) + cart[itemInd].quantity
+        cart[itemInd].price = product.price
+      } else {
+        cart.push({
+          productId: product.id,
+          quantity: quantity,
+          price: product.price
+        })
+      }
+      dispatch(addedToCart(cart))
       //won't work need to get current cart from local State and add product to it and send newCart
       //FIGURE THIS OUT
     }

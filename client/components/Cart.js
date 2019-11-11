@@ -9,7 +9,7 @@ class Cart extends Component {
     super(props)
   }
   componentDidMount() {
-    this.props.getCart(this.props.match.params.userId)
+    this.props.getCart()
   }
   render() {
     return (
@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getCart: userId => dispatch(getCart(userId))
+  getCart: () => dispatch(getCart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)

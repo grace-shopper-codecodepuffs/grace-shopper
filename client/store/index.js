@@ -7,22 +7,22 @@ import products from './products'
 
 function saveToLocalStorage(state) {
   try {
-    const serializedUserCart = JSON.stringify(state.user.currentCart)
-    localStorage.setItem('cart', serializedUserCart)
+    const serializedGuestCart = JSON.stringify(state.user.currentCart)
+    localStorage.setItem('cart', serializedGuestCart)
   } catch (error) {
     console.error(error)
   }
 }
 
-function loadFromLocalStorage() {
-  try {
-    const serializedState = localStorage.getItem('cart')
-    if (serializedState === null) return undefined
-    return JSON.parse(serializedState)
-  } catch (error) {
-    console.error(error)
-  }
-}
+// function loadFromLocalStorage() {
+//   try {
+//     const serializedState = localStorage.getItem('cart')
+//     if (serializedState === null) return undefined
+//     return JSON.parse(serializedState)
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
 
 const reducer = combineReducers({
   user,
@@ -32,17 +32,15 @@ const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 )
 
-const persistedState = {
-  user: {
-    currentCart: loadFromLocalStorage()
-  },
-  products: {
-    products: [],
-    aProduct: {}
-  }
-}
+// const persistedState = {
+//   user: {
+//     currentCart: loadFromLocalStorage()
+//   }
+// }
 
-export const store = createStore(reducer, persistedState, middleware)
+//export const store = createStore(reducer, persistedState, middleware)
+
+export const store = createStore(reducer, middleware)
 
 store.subscribe(() => saveToLocalStorage(store.getState()))
 
