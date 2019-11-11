@@ -46,6 +46,7 @@ export const addToCart = (product, quantity) => async (dispatch, getState) => {
     } else {
       dispatch(addedToCart(product))
       //won't work need to get current cart from local State and add product to it and send newCart
+      //FIGURE THIS OUT
     }
   } catch (err) {
     console.error(err)

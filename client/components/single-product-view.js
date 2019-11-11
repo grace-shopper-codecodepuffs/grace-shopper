@@ -51,7 +51,9 @@ class SingleProduct extends Component {
             min="0"
           />
           <br />
-          <button onClick={this.handleClick}>Add To Cart</button>
+          <button type="submit" onClick={this.handleClick}>
+            Add To Cart
+          </button>
         </div>
       </div>
     )
@@ -62,9 +64,9 @@ const mapStateToProps = state => ({
   aProduct: state.products.aProduct
 })
 
-const mapDispathToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
   getAProduct: potionId => dispatch(getAProduct(potionId)),
   addToCart: (potion, quantity) => dispatch(addToCart(potion, quantity))
 })
 
-export default connect(mapStateToProps, mapDispathToProps)(SingleProduct)
+export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
