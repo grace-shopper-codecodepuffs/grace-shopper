@@ -7,7 +7,7 @@ class SingleProduct extends Component {
   constructor() {
     super()
     this.state = {
-      quantity: 0
+      quantity: 1
     }
 
     this.handleClick = this.handleClick.bind(this)
