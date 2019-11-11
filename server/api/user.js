@@ -17,13 +17,10 @@ router.get('/:userId/cart', async (req, res, next) => {
 router.post('/:userId/cart', async (req, res, next) => {
   try {
     const userId = req.params.userId
-    const {potion, quantity} = req.body
-    // console.log('req.body>>>>', potion)
+    const {product, quantity} = req.body
     const user = await User.findByPk(userId)
-    // console.log('user is>>>>', user)
-    await user.addToCart(potion, quantity)
-    await user.getPotionsInCart()
-    // console.log('updatedCart after addToCart()>>>>', user.getCart())
+    await user.addToCart(product, quantity)
+    // const potionsInCart = await user.getPotionsInCart()
     res.json(await user.getPotionsInCart())
   } catch (err) {
     console.error(err)

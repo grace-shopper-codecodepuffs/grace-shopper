@@ -48,14 +48,23 @@ form div {
 /* NAV BAR VIEW END */
 
 /* START PRODUCT CARD ON ALL PRODUCTS VIEW */
+.potion-list {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
 
 .product-card {
-  width: 360px;
+  width: 300px;
   text-align: center;
   background-color: #b1dbef;
   padding: 24px;
   border-radius: 4px;
   margin-bottom: 24px;
+  margin: 15px;
+  display: inline-block;
 }
 
 .product-card img {
@@ -90,6 +99,8 @@ form div {
   padding: 48px;
   background-color: darkolivegreen;
   border-radius: 4px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 .product-view-right {
