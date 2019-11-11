@@ -50,6 +50,10 @@ class ProductCard extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  product: state.product
+})
+
 const mapDispatchToProps = dispatch => ({
   // gotAProduct: aProduct => dispatch(gotAProduct(aProduct)),
   addToCart: (potion, quantity) => dispatch(addToCart(potion, quantity))
