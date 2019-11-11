@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {addToCart} from '../store/user'
+import {connect} from 'react-redux'
 
 class ProductCard extends Component {
   constructor() {
@@ -49,4 +50,9 @@ class ProductCard extends Component {
   }
 }
 
-export default ProductCard
+const mapDispatchToProps = dispatch => ({
+  // gotAProduct: aProduct => dispatch(gotAProduct(aProduct)),
+  addToCart: (potion, quantity) => dispatch(addToCart(potion, quantity))
+})
+
+export default connect(null, mapDispatchToProps)(ProductCard)
