@@ -7,7 +7,8 @@ import {logout} from '../store'
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div className="navbar">
     <Link to="/potions" key="potions">
-      <h1 className="title">Visit Our Potion Selection</h1>
+      {/* <img src="../public/PattiesPotionsLogo.png" /> */}
+      <h1 className="title">Pattie's Potions</h1>
     </Link>
     <nav>
       {isLoggedIn ? (
