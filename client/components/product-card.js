@@ -22,7 +22,8 @@ class ProductCard extends Component {
 
   handleClick(event) {
     event.preventDefault()
-    this.props.addToCart(this.props.product, this.state.quantity)
+    console.log('our Qt>>>>>', Number(this.state.quantity))
+    this.props.addToCart(this.props.product, Number(this.state.quantity))
     this.setState({
       quantity: 1
     })
@@ -40,7 +41,12 @@ class ProductCard extends Component {
         </Link>
         <h4 className="price">{this.props.product.price}</h4>
         <form name={name}>
-          <input type="text" name="product-quantity" />
+          <input
+            type="text"
+            name="quantity"
+            onChange={this.handleChange}
+            min="0"
+          />
           <br />
           <button type="submit" onClick={this.handleClick}>
             Add To Cart

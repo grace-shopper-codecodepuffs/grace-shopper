@@ -24,7 +24,7 @@ class Cart extends Component {
           this.props.currentCart.map(product => (
             <div key={product.id}>
               <ProductCard key={product.id} product={product} />
-              <button type="button" onClick={() => this.handleClick}>
+              <button type="button" onClick={() => this.handleClick(product)}>
                 x Remove
               </button>
             </div>
