@@ -51,7 +51,9 @@ class SingleProduct extends Component {
             min="0"
           />
           <br />
-          <button onClick={this.handleClick}>Add To Cart</button>
+          <button type="submit" onClick={this.handleClick}>
+            Add To Cart
+          </button>
         </div>
       </div>
     )
