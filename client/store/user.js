@@ -7,9 +7,9 @@ import history from '../history'
 const GET_USER = 'GET_USER'
 const REMOVE_USER = 'REMOVE_USER'
 const CREATE_USER = 'CREATE_USER'
-const GOT_CART = 'GET_CART'
-const ADDED_TO_CART = 'ADD_TO_CART'
-const REMOVED_FROM_CART = 'REMOVE_FROM_CART'
+const GOT_CART = 'GOT_CART'
+const ADDED_TO_CART = 'ADDED_TO_CART'
+const REMOVED_FROM_CART = 'REMOVED_FROM_CART'
 const EDIT_QTY = 'EDIT_QTY'
 
 /**
@@ -29,10 +29,28 @@ const addedToCart = newCart => ({
   type: ADDED_TO_CART,
   newCart
 })
+const removedFromCart = product => ({
+  type: REMOVED_FROM_CART,
+  product
+})
 
 /**
  * THUNK CREATORS
  */
+
+export const removeFromCart = product => async (dispatch, getState) => {
+  try {
+    let state = getState()
+    if (state.user.id) {
+      await axios.delete(`/api/user/${state.user.id}/cart/${product.potionId}`)
+      dispatch(removedFromCart(product))
+    } else {
+      dispatch(removedFromCart(product))
+    }
+  } catch (err) {
+    console.error(err)
+  }
+}
 
 export const addToCart = (product, quantity) => async (dispatch, getState) => {
   try {
@@ -129,6 +147,13 @@ export default function(state = defaultUser, action) {
       return {...state, currentCart: action.currentCart}
     case ADDED_TO_CART:
       return {...state, currentCart: action.newCart}
+    case REMOVED_FROM_CART:
+      return {
+        ...state,
+        currentCart: state.currentCart.filter(
+          product => product.potionId !== action.product.potionId
+        )
+      }
     default:
       return state
   }
