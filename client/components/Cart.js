@@ -9,7 +9,7 @@ class Cart extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
-    this.props.getCart(this.props.match.params.userId)
+    this.props.getCart()
   }
 
   handleClick(event) {
@@ -38,8 +38,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getCart: userId => dispatch(getCart(userId)),
-  removeFromCart: product => dispatch(removeFromCart(product))
+  removeFromCart: product => dispatch(removeFromCart(product)),
+  getCart: () => dispatch(getCart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
