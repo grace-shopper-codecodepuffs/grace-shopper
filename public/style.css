@@ -138,27 +138,27 @@ form div {
 
 /*CART VIEW*/
 
-.product-image {
+.cart-image {
   float: left;
   width: 20%;
 }
-.product-details {
+.cart-details {
   float: left;
   width: 37%;
 }
-.product-price {
+.cart-price {
   float: left;
   width: 12%;
 }
-.product-quantity {
+.cart-quantity {
   float: left;
   width: 10%;
 }
-.product-removal {
+.cart-removal {
   float: left;
   width: 9%;
 }
-.product-line-price {
+.cart-line-price {
   float: left;
   width: 12%;
   text-align: right;
@@ -214,9 +214,9 @@ label {
   border-bottom: 1px solid;
 }
 
-.product-image,
-.product-details,
-.product-removal {
+.cart-image,
+.cart-details,
+.cart-removal {
   text-indent: -9999px;
 }
 
