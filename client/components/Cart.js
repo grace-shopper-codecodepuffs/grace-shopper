@@ -14,21 +14,21 @@ class Cart extends Component {
 
   handleClick(event) {
     this.props.removeFromCart(event)
-    // this.props.getCart(this.props.match.params.userId)
   }
 
   render() {
     return (
       <div>
         <h1>This is Your Cart!</h1>
-        {this.props.currentCart.map(item => (
-          <div key={item.id}>
-            <button type="button" onClick={() => this.handleClick(item)}>
-              x Remove
-            </button>
-            <ProductCard key={item.id} product={item} />
-          </div>
-        ))}
+        {this.props.currentCart &&
+          this.props.currentCart.map(item => (
+            <div key={item.id}>
+              <button type="button" onClick={() => this.handleClick(item)}>
+                x Remove
+              </button>
+              <ProductCard key={item.id} product={item} />
+            </div>
+          ))}
       </div>
     )
   }
