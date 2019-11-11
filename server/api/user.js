@@ -20,7 +20,6 @@ router.post('/:userId/cart', async (req, res, next) => {
     const {product, quantity} = req.body
     const user = await User.findByPk(userId)
     await user.addToCart(product, quantity)
-    // const potionsInCart = await user.getPotionsInCart()
     res.json(await user.getPotionsInCart())
   } catch (err) {
     console.error(err)
