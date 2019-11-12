@@ -23,10 +23,6 @@ const removedFromCart = productId => ({
   type: REMOVED_FROM_CART,
   productId
 })
-const editedQuantiyInCart = newCart => ({
-  type: EDITED_QUANTITY_IN_CART,
-  newCart
-})
 
 // ThunkCreators
 export const getCart = () => async (dispatch, getState) => {
@@ -84,27 +80,6 @@ export const removeFromCart = orderPotionToRemove => async (
       dispatch(removedFromCart(orderPotionToRemove.potionId))
     } else {
       dispatch(removedFromCart(orderPotionToRemove.potionId))
-    }
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-export const editQuantityInCart = (potionId, newQuantity) => async (
-  dispatch,
-  getState
-) => {
-  try {
-    let state = getState()
-    if (state.user.id >= 0) {
-      //await axios.put
-    } else {
-      let cart = JSON.parse(localStorage.getItem('cart'))
-      const itemInd = cart.findIndex(item => item.productId === product.id)
-      if (itemInd >= 0) {
-        cart[itemInd].quantity = Number(newQuantity)
-        dispatch(editedQuantiyInCart(cart))
-      }
     }
   } catch (err) {
     console.error(err)
