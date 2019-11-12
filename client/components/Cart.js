@@ -31,10 +31,11 @@ class Cart extends Component {
         <h1 className="carttitle">Shopping Cart</h1>
         <ul className="cartitems">
           {this.props.cart &&
-            this.props.cart.map((item, ind) => (
+            this.props.products.length > 0 &&
+            this.props.cart.map(item => (
               <li className="cartitem">
                 <ProductInCart
-                  key={ind}
+                  key={item.potionId}
                   itemFromCart={item}
                   potion={
                     this.props.products.filter(
