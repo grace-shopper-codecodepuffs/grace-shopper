@@ -17,7 +17,12 @@ nav a {
 
 form div {
   margin: 1em;
-  display: inline-block;
+  display: block;
+}
+
+form input {
+  padding: 8px;
+  border-radius: 4px;
 }
 
 /* HOME PAGE VIEW START */
@@ -221,3 +226,21 @@ form div {
 .cartitemprice {
   margin-left: 20px;
 }
+
+
+.form-contact-info,
+.form-shipping-address,
+.form-billing-address,
+.form-payment-info {
+  border: solid gray 2px;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.checkout-button {
+  padding: 16px;
+}
+
+/* END CART VIEW*/
+
