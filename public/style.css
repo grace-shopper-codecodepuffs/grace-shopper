@@ -12,18 +12,38 @@ label {
 
 nav a {
   display: inline-block;
-  margin: 1em;
+  padding: 10px;
+  color: white;
 }
 
 form div {
   margin: 1em;
-  display: inline-block;
+  display: block;
+}
+
+form input {
+  padding: 8px;
+  border-radius: 4px;
 }
 
 /* HOME PAGE VIEW START */
 .homePage {
   text-align: center;
   background-size: cover;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.homePage button {
+  margin: 40px;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #31aabc;
+  font-size: 24px;
+  color: white;
+}
+
+.homepage .a {
+  color: #6c215d;
 }
 /* HOME PAGE VIEW END */
 
@@ -31,10 +51,11 @@ form div {
 .navbar {
   display: flex;
   justify-content: space-between;
+  background-color: #6c215d;
 }
 
 .navbar .title {
-  color: #6c215d;
+  color: white;
   font-family: 'Princess Sofia', cursive;
   padding-left: 18px;
   font-size: 48px;
@@ -60,16 +81,21 @@ form div {
 .product-card {
   width: 300px;
   text-align: center;
-  background-color: #b1dbef;
+  background-color: #31aabc;
   padding: 24px;
   border-radius: 4px;
   margin-bottom: 24px;
   margin: 15px;
   display: inline-block;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .product-card img {
   max-width: 125px;
+}
+
+.product-card h3 {
+  color: white;
 }
 
 .product-card input {
@@ -221,3 +247,19 @@ form div {
 .cartitemprice {
   margin-left: 20px;
 }
+
+.form-contact-info,
+.form-shipping-address,
+.form-billing-address,
+.form-payment-info {
+  border: solid gray 2px;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.checkout-button {
+  padding: 16px;
+}
+
+/* END CART VIEW*/
