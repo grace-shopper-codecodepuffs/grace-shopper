@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+
 import {getCart, removeFromCart} from '../store/cart'
-import ProductCard from './product-card'
+import ProductInCart from './ProductInCart'
+import {getProducts} from '../store/products'
 
 class Cart extends Component {
   constructor(props) {
@@ -10,6 +12,7 @@ class Cart extends Component {
   }
   componentDidMount() {
     this.props.getCart()
+    this.props.getProducts()
   }
 
   handleClick(event) {
@@ -19,14 +22,21 @@ class Cart extends Component {
   render() {
     return (
       <div>
-        <h1>This is Your Cart!</h1>
-        {this.props.currentCart &&
-          this.props.currentCart.map(product => (
-            <div key={product.id}>
-              <ProductCard key={product.id} product={product} />
-              <button type="button" onClick={() => this.handleClick(product)}>
-                x Remove
-              </button>
+        <h1>Shopping Cart</h1>
+        {this.props.cart &&
+          this.props.cart.map((item, ind) => (
+            <div>
+              <ul>
+                <ProductInCart
+                  key={ind}
+                  itemFromCart={item}
+                  potion={
+                    this.props.products.filter(
+                      potion => potion.id === item.potionId
+                    )[0]
+                  }
+                />
+              </ul>
             </div>
           ))}
       </div>
@@ -34,10 +44,12 @@ class Cart extends Component {
   }
 }
 const mapStateToProps = state => ({
-  currentCart: state.cart
+  products: state.products.products,
+  cart: state.cart
 })
 
 const mapDispatchToProps = dispatch => ({
+  getProducts: () => dispatch(getProducts()),
   removeFromCart: product => dispatch(removeFromCart(product)),
   getCart: () => dispatch(getCart())
 })
