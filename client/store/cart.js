@@ -8,7 +8,6 @@ const REMOVED_FROM_CART = 'REMOVED_FROM_CART'
 const EDITED_QUANTITY_IN_CART = 'EDITED_QUANTITY_IN_CART'
 
 const defaultCart = JSON.parse(localStorage.getItem('cart')) || []
-console.log(defaultCart)
 
 // Action creators
 const gotCart = cart => ({
@@ -33,13 +32,14 @@ const editedQuantityInCart = newCart => ({
 export const getCart = () => async (dispatch, getState) => {
   try {
     let state = getState()
-    if (state.user.id >= 0) {
+    if (state.user.id > 0) {
       const {data} = await axios.get(`/api/user/cart`)
+      console.log('gotThisfromDB', data)
       dispatch(gotCart(data))
     } else {
       let cart = JSON.parse(localStorage.getItem('cart'))
       if (cart === null) cart = []
-      dispatch(gotCart(JSON.parse(localStorage.getItem('cart'))))
+      dispatch(gotCart(cart))
     }
   } catch (err) {
     console.error(err)
@@ -84,7 +84,7 @@ export const removeFromCart = potionId => async (dispatch, getState) => {
       await axios.delete(`/api/user/cart/${potionId}`)
       dispatch(removedFromCart(potionId))
     } else {
-      dispatch(removedFromCart(orderPotionToRemove.potionId))
+      dispatch(removedFromCart(potionId))
     }
   } catch (err) {
     console.error(err)
