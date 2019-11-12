@@ -9,7 +9,8 @@ import {
   Potions,
   SingleProduct,
   HomePage,
-  Cart
+  Cart,
+  Checkout
 } from './components'
 import {me} from './store'
 
@@ -34,6 +35,8 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/cart" component={Cart} />
         <Route path="/potions/:potionId" component={SingleProduct} />
+        <Route path="/checkout" commponent={Checkout} />
+        {/* devi will eventually connect the component */}
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
