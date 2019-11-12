@@ -27,6 +27,7 @@ class Cart extends Component {
   handlePlusClick(id) {}
 
   render() {
+    console.log('cart', cart)
     return (
       <div className="cartbody">
         <h1 className="carttitle">Shopping Cart</h1>
@@ -55,10 +56,13 @@ class Cart extends Component {
             ))}
         </ul>
         <div>
-          <Link to="/checkout">
-            <button type="button">Continue to Checkout</button>
-          </Link>
+          <h3 className="cartline">
+            Total: <span className="cartprice" />
+          </h3>
         </div>
+        <Link to="/checkout">
+          <button type="button">Continue to Checkout</button>
+        </Link>
       </div>
     )
   }

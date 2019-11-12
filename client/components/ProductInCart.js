@@ -20,16 +20,19 @@ const ProductInCart = ({
     <button type="button" onClick={() => handlePlusClick()}>
       +
     </button>
-    <div>
+    <button
+      type="button"
+      className="cartremovebutton"
+      onClick={() => handleRemoveClick()}
+    >
+      Remove
+    </button>
+    <div className="cartitempreviewtwo">
       <span className="cartitemprice">
-        ${itemFromCart.price * itemFromCart.quantity}
+        ${Math.round(itemFromCart.price * itemFromCart.quantity * 100) / 100}
       </span>
       <br />
     </div>
-
-    <button type="button" onClick={() => handleRemoveClick()}>
-      Remove
-    </button>
   </div>
 )
 
