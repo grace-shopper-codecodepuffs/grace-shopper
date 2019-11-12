@@ -22,7 +22,6 @@ class ProductCard extends Component {
 
   handleClick(event) {
     event.preventDefault()
-    console.log('our Qt>>>>>', Number(this.state.quantity))
     this.props.addToCart(this.props.product, Number(this.state.quantity))
     this.setState({
       quantity: 1
@@ -33,7 +32,6 @@ class ProductCard extends Component {
     const linkTo = `/potions/${this.props.product.id}`
     console.log('this.porps', this.props.product)
     return (
-      // console.log(this.props, '<--this.props')
       <div className="product-card">
         <Link to={linkTo}>
           <img src={this.props.product.picture} />

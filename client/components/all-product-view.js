@@ -9,20 +9,6 @@ class Potions extends Component {
     this.props.getProducts()
   }
 
-  // handleChange(event) {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
-
-  // handleClick(event) {
-  //   event.preventDefault()
-  //   this.props.addToCart(this.props.aProduct, this.state.quantity)
-  //   this.setState({
-  //     quantity:1
-  //   })
-  // }
-
   render() {
     const {products} = this.props.products
     return (
@@ -31,10 +17,7 @@ class Potions extends Component {
         <div className="potion-list">
           {products.length &&
             products.map(product => {
-              return (
-                // console.log('??????')
-                <ProductCard key={product.id} product={product} />
-              )
+              return <ProductCard key={product.id} product={product} />
             })}
         </div>
       </div>
