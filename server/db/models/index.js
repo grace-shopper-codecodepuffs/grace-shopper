@@ -59,7 +59,6 @@ User.prototype.editPotionCartQuantity = async function(potion, newQuantity) {
         potionId: potion.id
       }
     })
-
     await potionToUpdate.update({
       quantity: newQuantity
     })
