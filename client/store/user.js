@@ -11,7 +11,9 @@ const CREATE_USER = 'CREATE_USER'
 /**
  * INITIAL STATE
  */
-const defaultUser = {}
+const defaultUser = {
+  currentCart: JSON.parse(localStorage.getItem('cart')) || []
+}
 
 /**
  * ACTION CREATORS
