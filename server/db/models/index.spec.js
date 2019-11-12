@@ -14,6 +14,8 @@ describe('index', () => {
 
   describe('User Prototype Methods', () => {
     let cody
+    let newUser
+    let hogwarts
     let potion
     let potion2
     beforeEach(async () => {
@@ -22,6 +24,17 @@ describe('index', () => {
         password: 'treatsforlife',
         firstName: 'Marley',
         lastName: 'Teag'
+      })
+      newUser = await User.create({
+        email: 'me@gmail.com',
+        password: '123'
+      })
+      hogwarts = await Address.create({
+        name: 'hogwarts school of witchcraft and wizardry',
+        line1: '34 Privet Dr.',
+        city: 'london',
+        state: 'Platform 9 3/4',
+        zip: '17171'
       })
       potion = await Potion.create({
         name: 'eight hours',
@@ -134,6 +147,21 @@ describe('index', () => {
         const cartTotal = await cody.getCartTotal()
 
         expect(cartTotal).to.be.equal(99.98)
+      })
+    })
+
+    describe('checkout', () => {
+      it("updates the user's first and last names", async () => {
+        await newUser.addToCart(potion, 5)
+        await newUser.checkout({
+          firstName: 'Harry',
+          lastName: 'Potter',
+          shipping: hogwarts,
+          billing: hogwarts
+        })
+
+        expect(newUser.firstName).to.be.equal('Harry')
+        expect(newUser.lastName).to.be.equal('Potter')
       })
     })
   })

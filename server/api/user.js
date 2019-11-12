@@ -27,6 +27,18 @@ router.post('/cart', async (req, res, next) => {
   }
 })
 
+router.post('/checkout', async (req, res, next) => {
+  try {
+    const userId = req.user.id //establishes the user that will checkout
+    const checkoutFormInfo = req.body
+    const user = await User.findByPk(userId) //finds the user information
+    await user.checkout(checkoutFormInfo)
+  } catch (error) {
+    console.error(error)
+    next(error)
+  }
+})
+
 router.delete('/cart/:potionId', async (req, res, next) => {
   try {
     const userId = req.user.id

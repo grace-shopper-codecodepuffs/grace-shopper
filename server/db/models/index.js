@@ -84,7 +84,6 @@ User.prototype.getPotionsInCart = async function() {
 User.prototype.getCartTotal = async function() {
   try {
     const allPotionsInCart = await this.getPotionsInCart()
-
     const total = allPotionsInCart.reduce((accum, potion) => {
       const currPotion = potion.dataValues.quantity * potion.dataValues.price
       return accum + currPotion
@@ -95,6 +94,42 @@ User.prototype.getCartTotal = async function() {
   }
 }
 
+User.prototype.checkout = async function({
+  firstName,
+  lastName,
+  shipping,
+  billing
+}) {
+  try {
+    //update user first/last names
+    this.update({
+      firstName: firstName,
+      lastName: lastName
+    })
+    //get the cart we want
+    const cart = this.getCart() //we have the cart at the user that has been updated
+    //declare shipping/billing address (find or create)
+    const shippingAddress = Address.findOrCreate(shipping)
+    const billingAddress = Address.findOrCreate(billing)
+    //update the shipping/biling addresses for the order
+    cart.setShippingAdress = shippingAddress
+    cart.setBillingAddress = billingAddress
+    //update the cart so it isn't a cart and theres a shipping date
+    cart.update({
+      isCart: false,
+      orderDate: new Date()
+    })
+    //initialize a new empty cart for user
+    Order.create({
+      userId: this.id
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+//update new stock quantity
+
 //Order will have many potions, and will have quantity on order on the through table
 // Order will have addPotion, getPotions, removePotion, etc.
 Order.belongsToMany(Potion, {
@@ -104,8 +139,8 @@ Potion.belongsToMany(Order, {
   through: OrdersPotions
 })
 
-User.belongsTo(Address, {as: 'shippingAddress'})
-User.belongsTo(Address, {as: 'billingAddress'})
+Order.belongsTo(Address, {as: 'shippingAddress'})
+Order.belongsTo(Address, {as: 'billingAddress'})
 
 module.exports = {
   User,
