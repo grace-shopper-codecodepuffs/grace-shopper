@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import ProductCard from './product-card'
 import {connect} from 'react-redux'
 import {getProducts} from '../store/products'
-import {addToCart} from '../store/user'
+import {addToCart} from '../store/cart'
 
 class Potions extends Component {
   componentDidMount() {
