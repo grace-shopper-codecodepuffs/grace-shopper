@@ -34,7 +34,6 @@ export const getCart = () => async (dispatch, getState) => {
     let state = getState()
     if (state.user.id > 0) {
       const {data} = await axios.get(`/api/user/cart`)
-      console.log('gotThisfromDB', data)
       dispatch(gotCart(data))
     } else {
       let cart = JSON.parse(localStorage.getItem('cart'))
