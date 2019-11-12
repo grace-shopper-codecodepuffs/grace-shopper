@@ -304,6 +304,8 @@ class Address extends React.Component {
           />
         </div>
 
+        <h2>Total: $</h2>
+
         <div className="checkout-button">
           <button type="submit" key="submit" onClick={this.handleClick}>
             Checkout Now
