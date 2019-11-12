@@ -37,8 +37,6 @@ class Routes extends Component {
         <Route path="/checkout" component={Checkout} />
         {/* ^^^^move this into isLoggedIn? */}
         <Route path="/potions/:potionId" component={SingleProduct} />
-        <Route path="/checkout" commponent={Checkout} />
-        {/* devi will eventually connect the component */}
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
