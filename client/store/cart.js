@@ -32,7 +32,7 @@ export const getCart = () => async (dispatch, getState) => {
       const {data} = await axios.get(`/api/user/${state.user.id}/cart`)
       dispatch(gotCart(data))
     } else {
-      dispatch(JSON.parse(localStorage.getItem('cart')))
+      dispatch(gotCart(JSON.parse(localStorage.getItem('cart'))))
     }
   } catch (err) {
     console.error(err)
@@ -50,7 +50,8 @@ export const addToCart = (product, quantity) => async (dispatch, getState) => {
       dispatch(addedToCart(data))
     } else {
       let cart = JSON.parse(localStorage.getItem('cart'))
-      const itemInd = cart.findIndex(item => item.productId === product.id)
+      if (cart === null) cart = []
+      const itemInd = cart.findIndex(item => item.potionId === product.id)
       if (itemInd >= 0) {
         cart[itemInd].quantity = Number(quantity)
         cart[itemInd].price = product.price
