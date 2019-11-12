@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import ProductCard from './product-card'
 import {connect} from 'react-redux'
 import {getProducts} from '../store/products'
+import {addToCart} from '../store/cart'
 
 class Potions extends Component {
   componentDidMount() {
@@ -29,7 +30,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getProducts: () => dispatch(getProducts())
+  getProducts: () => dispatch(getProducts()),
+  addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Potions)

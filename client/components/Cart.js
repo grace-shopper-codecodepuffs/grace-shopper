@@ -38,7 +38,6 @@ class Cart extends Component {
                 />
               </ul>
             </div>
-            // </div>
           ))}
       </div>
     )

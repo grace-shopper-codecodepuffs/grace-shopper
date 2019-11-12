@@ -29,7 +29,7 @@ export const getCart = () => async (dispatch, getState) => {
   try {
     let state = getState()
     if (state.user.id >= 0) {
-      const {data} = await axios.get(`/api/user/${state.user.id}/cart`)
+      const {data} = await axios.get(`/api/user/cart`)
       dispatch(gotCart(data))
     } else {
       dispatch(gotCart(JSON.parse(localStorage.getItem('cart'))))
@@ -43,7 +43,7 @@ export const addToCart = (product, quantity) => async (dispatch, getState) => {
   try {
     let state = getState()
     if (state.user.id >= 0) {
-      const {data} = await axios.post(`/api/user/${state.user.id}/cart`, {
+      const {data} = await axios.post(`/api/user/cart`, {
         product,
         quantity
       })
@@ -77,9 +77,7 @@ export const removeFromCart = orderPotionToRemove => async (
   try {
     let state = getState()
     if (state.user.id >= 0) {
-      await axios.delete(
-        `/api/user/${state.user.id}/cart/${orderPotionToRemove.potionId}`
-      )
+      await axios.delete(`/api/user/cart/${orderPotionToRemove.potionId}`)
       dispatch(removedFromCart(orderPotionToRemove.potionId))
     } else {
       dispatch(removedFromCart(orderPotionToRemove.potionId))
@@ -97,6 +95,8 @@ export default function(state = defaultCart, action) {
       return action.newCart
     case REMOVED_FROM_CART:
       return state.filter(product => product.potionId !== action.productId)
+    case EDITED_QUANTITY_IN_CART:
+      return action.newCart
     default:
       return state
   }
