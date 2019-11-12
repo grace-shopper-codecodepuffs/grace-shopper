@@ -47,6 +47,51 @@ async function seed() {
       quantity: 1000,
       picture: 'https://www.freeiconspng.com/uploads/potion-icon-png-27.png',
       price: 9.95
+    }),
+    Potion.create({
+      name: 'Eight Hours',
+      description:
+        'eight hours of sleep in a bottle. Stay up all night studying? Drink eight hours, to feel refreshed, as if you had gotten a full night of sleep. WARNING: SHOULD NOT BE USED MORE THAN TWO DAYS IN A ROW. SIDE EFFECTS ARE LITERALLY BRAIN MELTING.',
+      quantity: 50,
+      picture:
+        'https://cdn0.iconfinder.com/data/icons/education-flat-7/128/23_Flask-128.png',
+      price: 29.99
+    }),
+    Potion.create({
+      name: 'Perfect Eyesight',
+      description:
+        "One drop in each eye in the morning and you'll have 20/20 vision for the day! 1 bottle should last you the entire month if used correctly.",
+      quantity: 75,
+      picture:
+        'https://cdn4.iconfinder.com/data/icons/imod/128/Software/labo.png',
+      price: 10.0
+    }),
+    Potion.create({
+      name: 'Animal Fun',
+      description:
+        'Put three drops into your morning beverage, squeeze your eyes tightly shut as you drink, and spend the day as the animal of your choice. Lasts 6-8 hours.',
+      quantity: 40,
+      picture:
+        'https://cdn3.iconfinder.com/data/icons/fantasy-and-role-play-game-adventure-quest/512/Potion-128.png',
+      price: 185.0
+    }),
+    Potion.create({
+      name: 'Icarus',
+      description:
+        'Place two drops in each ear and enjoy the magical experience of flight. Should avoid the sun otherwise risk immediate combustion. #GetLifted',
+      quantity: 75,
+      picture:
+        'https://cdn3.iconfinder.com/data/icons/humano2/128x128/categories/applications-science.png',
+      price: 300.0
+    }),
+    Potion.create({
+      name: 'Fever Flush',
+      description:
+        'Take three drops to immediately develop symptons of a fever or cold. Use this to get out of class or work- just be warned, if more than three drops are taken, it can result in vomiting and a rash.',
+      quantity: 35,
+      picture:
+        'https://cdn4.iconfinder.com/data/icons/halloween-2-5/226/8-128.png',
+      price: 29.99
     })
   ])
   const address = await Promise.all([

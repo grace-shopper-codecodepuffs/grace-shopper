@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-key */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {getCart, removeFromCart} from '../store/cart'
+import {getCart, removeFromCart, editQuantityInCart} from '../store/cart'
 import ProductInCart from './ProductInCart'
 import {Link} from 'react-router-dom'
 
@@ -18,13 +19,17 @@ class Cart extends Component {
     this.props.getProducts()
   }
 
-  handleRemoveClick(event) {
-    this.props.removeFromCart(event)
+  handleRemoveClick(id) {
+    this.props.removeFromCart(id)
   }
 
-  handleMinusClick(id) {}
+  handleMinusClick(id, newQ) {
+    this.props.editQtInCart(id, newQ)
+  }
 
-  handlePlusClick(id) {}
+  handlePlusClick(id, newQ) {
+    this.props.editQtInCart(id, newQ)
+  }
 
   render() {
     console.log('cart', cart)
@@ -32,7 +37,7 @@ class Cart extends Component {
       <div className="cartbody">
         <h1 className="carttitle">Shopping Cart</h1>
         <ul className="cartitems">
-          {this.props.cart &&
+          {this.props.cart.length > 0 &&
             this.props.products.length > 0 &&
             this.props.cart.map(item => (
               <li className="cartitem">
@@ -44,7 +49,9 @@ class Cart extends Component {
                       potion => potion.id === item.potionId
                     )[0]
                   }
-                  handleMinusClick={() => this.handleMinusClick()}
+                  handleMinusClick={() =>
+                    this.handleMinusClick(item.potionId, item.quantity - 1)
+                  }
                   handlePlusClick={() =>
                     this.handlePlusClick(item.potionId, item.quantity + 1)
                   }
@@ -75,7 +82,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(getProducts()),
   removeFromCart: productId => dispatch(removeFromCart(productId)),
-  getCart: () => dispatch(getCart())
+  getCart: () => dispatch(getCart()),
+  editQtInCart: (productId, quantity) =>
+    dispatch(editQuantityInCart(productId, quantity))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
