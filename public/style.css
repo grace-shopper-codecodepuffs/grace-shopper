@@ -23,7 +23,6 @@ form div {
 /* HOME PAGE VIEW START */
 .homePage {
   text-align: center;
-  background-image: url('https://media.giphy.com/media/esjfDnpbkVPCE/giphy.gif');
   background-size: cover;
 }
 /* HOME PAGE VIEW END */
@@ -35,8 +34,10 @@ form div {
 }
 
 .navbar .title {
-  color: forestgreen;
-  font-family: cursive;
+  color: #6c215d;
+  font-family: 'Princess Sofia', cursive;
+  padding-left: 18px;
+  font-size: 48px;
 }
 
 .navbar img {

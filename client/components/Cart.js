@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {getCart, removeFromCart} from '../store/user'
+import {getCart, removeFromCart} from '../store/cart'
 import ProductInCart from './ProductInCart'
 import {getProducts} from '../store/products'
 
@@ -23,8 +23,8 @@ class Cart extends Component {
     return (
       <div>
         <h1>Shopping Cart</h1>
-        {this.props.currentCart &&
-          this.props.currentCart.map((item, ind) => (
+        {this.props.cart &&
+          this.props.cart.map((item, ind) => (
             // <ProductCard key={item.id} product={item} quantity={item.quantity}/>
             // <div className="shopping-cart" key={item.id}>
             // <div className="column-labels">
@@ -48,8 +48,8 @@ class Cart extends Component {
   }
 }
 const mapStateToProps = state => ({
-  currentCart: state.user.currentCart,
-  products: state.products.products
+  products: state.products.products,
+  cart: state.cart
 })
 
 const mapDispatchToProps = dispatch => ({

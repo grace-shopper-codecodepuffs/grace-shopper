@@ -5,7 +5,6 @@ const HomePage = () => {
   return (
     <div className="homePage">
       <div className="fullPage">
-        <h1>Pattie's Potions Mwahaha</h1>
         <Link to="/potions" key="potions">
           <img src="https://media.giphy.com/media/SY8xqBKwUiVtgrnQwJ/giphy.gif" />
         </Link>
