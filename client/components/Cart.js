@@ -8,25 +8,31 @@ import {getProducts} from '../store/products'
 class Cart extends Component {
   constructor(props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleRemoveClick = this.handleRemoveClick.bind(this)
+    this.handleMinusClick = this.handleMinusClick.bind(this)
+    this.handlePlusClick = this.handlePlusClick.bind(this)
   }
   componentDidMount() {
     this.props.getCart()
     this.props.getProducts()
   }
 
-  handleClick(event) {
+  handleRemoveClick(event) {
     this.props.removeFromCart(event)
   }
 
+  handleMinusClick(id) {}
+
+  handlePlusClick(id) {}
+
   render() {
     return (
-      <div>
-        <h1>Shopping Cart</h1>
-        {this.props.cart &&
-          this.props.cart.map((item, ind) => (
-            <div>
-              <ul>
+      <div className="cartbody">
+        <h1 className="carttitle">Shopping Cart</h1>
+        <ul className="cartitems">
+          {this.props.cart &&
+            this.props.cart.map((item, ind) => (
+              <li className="cartitem">
                 <ProductInCart
                   key={ind}
                   itemFromCart={item}
@@ -35,11 +41,17 @@ class Cart extends Component {
                       potion => potion.id === item.potionId
                     )[0]
                   }
+                  handleMinusClick={() => this.handleMinusClick()}
+                  handlePlusClick={() =>
+                    this.handlePlusClick(item.potionId, item.quantity + 1)
+                  }
+                  handleRemoveClick={() =>
+                    this.handleRemoveClick(item.potionId)
+                  }
                 />
-              </ul>
-            </div>
-            // </div>
-          ))}
+              </li>
+            ))}
+        </ul>
       </div>
     )
   }
@@ -51,7 +63,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(getProducts()),
-  removeFromCart: product => dispatch(removeFromCart(product)),
+  removeFromCart: productId => dispatch(removeFromCart(productId)),
   getCart: () => dispatch(getCart())
 })
 
