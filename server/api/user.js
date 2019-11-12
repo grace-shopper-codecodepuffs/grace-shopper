@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Potion} = require('../db/models')
+const {User, Potion, OrdersPotions} = require('../db/models')
 module.exports = router
 
 router.get('/cart', async (req, res, next) => {
@@ -40,11 +40,20 @@ router.delete('/cart/:potionId', async (req, res, next) => {
   }
 })
 
+//edit qt of order in cart
 router.put('/cart/:potionId', async (req, res, next) => {
   try {
-    const userId = req.user.id
-    const user = await User.findByPk(userId)
-    const potion = await Potion.findByPk(req.params.potionId)
+    const user = User.findByPk(req.user.id)
+    const cartId = user.getCart().id
+    const potionId = req.params.potionId
+    const orderPotionInstance = OrdersPotions.findOne({
+      where: {
+        orderId: cartId,
+        potionId: potionId
+      }
+    })
+    orderPotionInstance.update(req.body)
+    res.send(user.getPotionsInCart())
   } catch (err) {
     console.error(err)
     next(err)
