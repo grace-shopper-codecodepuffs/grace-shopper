@@ -25,9 +25,6 @@ class Cart extends Component {
         <h1>Shopping Cart</h1>
         {this.props.cart &&
           this.props.cart.map((item, ind) => (
-            // <ProductCard key={item.id} product={item} quantity={item.quantity}/>
-            // <div className="shopping-cart" key={item.id}>
-            // <div className="column-labels">
             <div>
               <ul>
                 <ProductInCart
