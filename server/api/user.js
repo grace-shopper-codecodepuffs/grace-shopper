@@ -1,10 +1,10 @@
 const router = require('express').Router()
-const {User, Potion} = require('../db/models')
+const {User, Potion, OrdersPotions} = require('../db/models')
 module.exports = router
 
-router.get('/:userId/cart', async (req, res, next) => {
+router.get('/cart', async (req, res, next) => {
   try {
-    const userId = req.params.userId
+    const userId = req.user.id
     const user = await User.findByPk(userId)
     const cart = await user.getPotionsInCart()
     res.json(cart)
@@ -14,9 +14,9 @@ router.get('/:userId/cart', async (req, res, next) => {
   }
 })
 
-router.post('/:userId/cart', async (req, res, next) => {
+router.post('/cart', async (req, res, next) => {
   try {
-    const userId = req.params.userId
+    const userId = req.user.id
     const {product, quantity} = req.body
     const user = await User.findByPk(userId)
     await user.addToCart(product, quantity)
@@ -27,13 +27,33 @@ router.post('/:userId/cart', async (req, res, next) => {
   }
 })
 
-router.delete('/:userId/cart/:potionId', async (req, res, next) => {
-  console.log('req.body>>>', req.body)
+router.delete('/cart/:potionId', async (req, res, next) => {
   try {
-    const user = await User.findByPk(req.params.userId)
+    const userId = req.user.id
+    const user = await User.findByPk(userId)
     const potion = await Potion.findByPk(req.params.potionId)
     await user.removeFromCart(potion)
     res.json(await user.getPotionsInCart())
+  } catch (err) {
+    console.error(err)
+    next(err)
+  }
+})
+
+//edit qt of order in cart
+router.put('/cart/:potionId', async (req, res, next) => {
+  try {
+    const user = User.findByPk(req.user.id)
+    const cartId = user.getCart().id
+    const potionId = req.params.potionId
+    const orderPotionInstance = OrdersPotions.findOne({
+      where: {
+        orderId: cartId,
+        potionId: potionId
+      }
+    })
+    orderPotionInstance.update(req.body)
+    res.send(user.getPotionsInCart())
   } catch (err) {
     console.error(err)
     next(err)

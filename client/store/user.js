@@ -11,9 +11,7 @@ const CREATE_USER = 'CREATE_USER'
 /**
  * INITIAL STATE
  */
-const defaultUser = {
-  currentCart: JSON.parse(localStorage.getItem('cart')) || []
-}
+const defaultUser = {}
 
 /**
  * ACTION CREATORS
@@ -66,7 +64,7 @@ export const logout = () => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return action.user
+      return {...state, user: action.user}
     case REMOVE_USER:
       return defaultUser
     case CREATE_USER:
