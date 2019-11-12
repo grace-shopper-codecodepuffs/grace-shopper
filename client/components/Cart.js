@@ -21,12 +21,12 @@ class Cart extends Component {
       <div>
         <h1>This is Your Cart!</h1>
         {this.props.currentCart &&
-          this.props.currentCart.map(item => (
-            <div key={item.id}>
-              <button type="button" onClick={() => this.handleClick(item)}>
+          this.props.currentCart.map(product => (
+            <div key={product.id}>
+              <ProductCard key={product.id} product={product} />
+              <button type="button" onClick={() => this.handleClick(product)}>
                 x Remove
               </button>
-              <ProductCard key={item.id} product={item} />
             </div>
           ))}
       </div>
