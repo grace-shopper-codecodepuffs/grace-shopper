@@ -32,17 +32,9 @@ User.prototype.addToCart = async function(potion, quantity) {
   try {
     const cart = await this.getCart()
     const gotPotion = await Potion.findByPk(potion.id)
-    //have the specific cart, we have
-    // if (!cart.includes(gotPotion)){
-    //   await cart.addPotion(gotPotion, {
-    //     through: {price: gotPotion.price, quantity: quantity}
-    //   })
-    // } else {
-    //   let order = await OrdersPotions.update({
-    //     where: {
-    //       potionId
-    //     }
-    //   })
+    await cart.addPotion(gotPotion, {
+      through: {price: gotPotion.price, quantity: quantity}
+    })
   } catch (err) {
     console.error(err)
   }
