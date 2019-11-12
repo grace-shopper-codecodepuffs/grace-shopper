@@ -30,7 +30,6 @@ class ProductCard extends Component {
 
   render() {
     const linkTo = `/potions/${this.props.product.id}`
-    console.log('this.porps', this.props.product)
     return (
       <div className="product-card">
         <Link to={linkTo}>
