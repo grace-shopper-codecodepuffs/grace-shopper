@@ -228,7 +228,15 @@ form input {
   size: 80px;
 }
 .cartitemtitle {
-  margin: 0 0 10px 0;
+  /* margin: 0 0 10px 0; */
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: inherit;
+}
+.cartitemadjust {
+  /* margin: 0 0 10px 0; */
+  margin-left: 50px;
+  margin-right: 50px;
   font-size: inherit;
 }
 .cartitemdescription {
@@ -236,6 +244,8 @@ form input {
   color: rgba(51, 58, 69, 0.6);
 }
 .cartitemquantity {
+  margin-left: 50px;
+  margin-right: 50px;
   max-width: 30px;
   padding: 8px 12px;
   font-size: inherit;
@@ -245,7 +255,9 @@ form input {
   text-align: center;
 }
 .cartitemprice {
-  margin-left: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: inherit;
 }
 
 /* END CART VIEW*/

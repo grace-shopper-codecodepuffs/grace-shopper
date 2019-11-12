@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-
 import {getCart, removeFromCart} from '../store/cart'
 import ProductInCart from './ProductInCart'
+import {Link} from 'react-router-dom'
+
 import {getProducts} from '../store/products'
 
 class Cart extends Component {
@@ -53,6 +54,11 @@ class Cart extends Component {
               </li>
             ))}
         </ul>
+        <div>
+          <Link to="/checkout">
+            <button type="button">Continue to Checkout</button>
+          </Link>
+        </div>
       </div>
     )
   }
