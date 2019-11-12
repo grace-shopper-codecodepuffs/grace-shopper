@@ -13,24 +13,23 @@ const ProductInCart = ({
       <h1 className="cartitemtitle">{potion.name}</h1>
       <br />
     </div>
-    <div>
-      <span className="cartitemprice">{itemFromCart.price}</span>
-      <br />
-    </div>
-    <button type="button" onClick={() => handlePlusClick()}>
-      +
-    </button>
-    <p className="cartitemquantity">{itemFromCart.quantity}</p>
     <button type="button" onClick={() => handleMinusClick()}>
       -
     </button>
+    <p className="cartitemquantity">{itemFromCart.quantity}</p>
+    <button type="button" onClick={() => handlePlusClick()}>
+      +
+    </button>
     <div>
-      <button type="button" onClick={() => handleRemoveClick()}>
-        x Remove
-      </button>
-      <button type="button" />
+      <span className="cartitemprice">
+        ${itemFromCart.price * itemFromCart.quantity}
+      </span>
+      <br />
     </div>
-    <br />
+
+    <button type="button" onClick={() => handleRemoveClick()}>
+      Remove
+    </button>
   </div>
 )
 
