@@ -37,6 +37,8 @@ export const getCart = () => async (dispatch, getState) => {
       const {data} = await axios.get(`/api/user/cart`)
       dispatch(gotCart(data))
     } else {
+      let cart = JSON.parse(localStorage.getItem('cart'))
+      if (cart === null) cart = []
       dispatch(gotCart(JSON.parse(localStorage.getItem('cart'))))
     }
   } catch (err) {
