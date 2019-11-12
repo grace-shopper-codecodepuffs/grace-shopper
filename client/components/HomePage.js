@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import CheckoutPage from './checkout-page'
 
 const HomePage = () => {
   return (
@@ -14,7 +13,6 @@ const HomePage = () => {
             Enter at Your Own Risk!
           </Link>
         </h3>
-        <CheckoutPage />
       </div>
     </div>
   )

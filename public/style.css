@@ -20,6 +20,11 @@ form div {
   display: block;
 }
 
+form input {
+  padding: 8px;
+  border-radius: 4px;
+}
+
 /* HOME PAGE VIEW START */
 .homePage {
   text-align: center;
@@ -299,6 +304,20 @@ label {
 
 .checkout:hover {
   background-color: #494;
+}
+
+.form-contact-info,
+.form-shipping-address,
+.form-billing-address,
+.form-payment-info {
+  border: solid gray 2px;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.checkout-button {
+  padding: 16px;
 }
 
 /* END CART VIEW*/

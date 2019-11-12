@@ -9,7 +9,8 @@ import {
   Potions,
   SingleProduct,
   HomePage,
-  Cart
+  Cart,
+  Checkout
 } from './components'
 import {me} from './store'
 
@@ -33,6 +34,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/cart" component={Cart} />
+        <Route path="/checkout" component={Checkout} />
+        {/* ^^^^move this into isLoggedIn? */}
         <Route path="/potions/:potionId" component={SingleProduct} />
         {isLoggedIn && (
           <Switch>

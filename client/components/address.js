@@ -28,39 +28,69 @@ class Address extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+    this.createOrder = this.createOrder.bind(this)
   }
 
   handleChange(event) {
-    console.log([event.target.name], event.target.value)
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  componentDidMount() {}
+  handleClick() {
+    this.createOrder({
+      firstName: this.state.firstName,
+      lastName: this.state.firstName,
+      shipping: {
+        name: this.state.shippingName,
+        line1: this.state.shippingLine1,
+        line2: this.state.shippingLine2,
+        city: this.state.shippingCity,
+        state: this.state.shippingState,
+        zip: this.state.shippingZip
+      },
+      billing: {
+        name: this.state.billingName,
+        line1: this.state.billingLine1,
+        line2: this.state.billingLine2,
+        city: this.state.billingCity,
+        state: this.state.billingState,
+        zip: this.state.billingZip
+      },
+      billingFirstname: this.state.billingFirstname,
+      billingLastName: this.state.billingLastName,
+      creditCardNum: this.state.creditCardNum,
+      csv: this.state.csv,
+      expirationDate: this.state.expirationDate
+    })
+  }
+
+  async createOrder(newOrder) {
+    try {
+      await Axios.post('/api/user/checkout', newOrder)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   handleSubmit(event) {
     event.preventDefault()
-    this.componentDidMount()
     this.setState({
       firstName: '',
       lastName: '',
-      shipping: {
-        name: '',
-        line1: '',
-        line2: '',
-        city: '',
-        state: '',
-        zip: ''
-      },
-      billing: {
-        name: '',
-        line1: '',
-        line2: '',
-        city: '',
-        state: '',
-        zip: ''
-      },
+      shippingName: '',
+      shippingLine1: '',
+      shippingLine2: '',
+      shippingCity: '',
+      shippingState: '',
+      shippingZip: '',
+      billingName: '',
+      billingLine1: '',
+      billingLine2: '',
+      billingCity: '',
+      billingState: '',
+      billingZip: '',
       billingFirstname: '',
       billingLastName: '',
       creditCardNum: '',
@@ -150,9 +180,9 @@ class Address extends React.Component {
 
           <input
             type="text"
-            name="zip"
+            name="shippingZip"
             placeholder="Zip"
-            value={this.state.shipping.zip}
+            value={this.state.shippingZip}
             onChange={this.handleChange}
           />
           <br />
@@ -163,9 +193,9 @@ class Address extends React.Component {
           <h3>Billing Address</h3>
           <input
             type="text"
-            name="billingAddressLine1"
+            name="billingName"
             placeholder="Name"
-            value={this.state.billing.name}
+            value={this.state.billingName}
             onChange={this.handleChange}
           />
           <br />
@@ -173,9 +203,9 @@ class Address extends React.Component {
 
           <input
             type="text"
-            name="billingAddressLine1"
+            name="billingLine1"
             placeholder="Address Line 1"
-            value={this.state.billing.line1}
+            value={this.state.billingLine1}
             onChange={this.handleChange}
           />
           <br />
@@ -183,9 +213,9 @@ class Address extends React.Component {
 
           <input
             type="text"
-            name="billingAddressLine2"
+            name="billingLine2"
             placeholder="Address Line 2"
-            value={this.state.billing.line2}
+            value={this.state.billingLine2}
             onChange={this.handleChange}
           />
           <br />
@@ -195,7 +225,7 @@ class Address extends React.Component {
             type="text"
             name="billingCity"
             placeholder="City"
-            value={this.state.billing.city}
+            value={this.state.billingCity}
             onChange={this.handleChange}
           />
           <br />
@@ -205,7 +235,7 @@ class Address extends React.Component {
             type="text"
             name="billingState"
             placeholder="State"
-            value={this.state.billing.state}
+            value={this.state.billingState}
             onChange={this.handleChange}
           />
           <br />
@@ -215,7 +245,7 @@ class Address extends React.Component {
             type="text"
             name="billingZip"
             placeholder="Zip"
-            value={this.state.billing.zip}
+            value={this.state.billingZip}
             onChange={this.handleChange}
           />
           <br />
@@ -273,11 +303,12 @@ class Address extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-        <br />
 
-        <button type="submit" key="submit" onClick={this.handleClick}>
-          Checkout Now
-        </button>
+        <div className="checkout-button">
+          <button type="submit" key="submit" onClick={this.handleClick}>
+            Checkout Now
+          </button>
+        </div>
       </form>
     )
   }
