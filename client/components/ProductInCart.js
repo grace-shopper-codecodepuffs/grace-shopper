@@ -14,15 +14,23 @@ const ProductInCart = ({
       <br />
     </div>
     <div>
-      <button>+</button>
-      <p className="cartitemquantity">{itemFromCart.quantity}</p>
-      <button>-</button>
       <span className="cartitemprice">{itemFromCart.price}</span>
+      <br />
+    </div>
+    <button type="button" onClick={() => handlePlusClick()}>
+      +
+    </button>
+    <p className="cartitemquantity">{itemFromCart.quantity}</p>
+    <button type="button" onClick={() => handleMinusClick()}>
+      -
+    </button>
+    <div>
       <button type="button" onClick={() => handleRemoveClick()}>
         x Remove
       </button>
-      <br />
+      <button type="button" />
     </div>
+    <br />
   </div>
 )
 
