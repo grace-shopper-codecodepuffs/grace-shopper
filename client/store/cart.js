@@ -1,6 +1,5 @@
 import axios from 'axios'
 import history from '../history'
-import {UserHome} from '../components/user-home'
 
 // Action types
 const GOT_CART = 'GOT_CART'
