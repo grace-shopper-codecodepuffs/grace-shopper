@@ -55,17 +55,17 @@ router.delete('/cart/:potionId', async (req, res, next) => {
 //edit qt of order in cart
 router.put('/cart/:potionId', async (req, res, next) => {
   try {
-    const user = User.findByPk(req.user.id)
-    const cartId = user.getCart().id
+    const user = await User.findByPk(req.user.id)
+    const cart = await user.getCart()
     const potionId = req.params.potionId
-    const orderPotionInstance = OrdersPotions.findOne({
+    const orderPotionInstance = await OrdersPotions.findOne({
       where: {
-        orderId: cartId,
+        orderId: cart.id,
         potionId: potionId
       }
     })
-    orderPotionInstance.update(req.body)
-    res.send(user.getPotionsInCart())
+    await orderPotionInstance.update(req.body)
+    res.send(await user.getPotionsInCart())
   } catch (err) {
     console.error(err)
     next(err)
