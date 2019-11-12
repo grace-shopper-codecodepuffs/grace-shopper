@@ -5,6 +5,8 @@ class Address extends React.Component {
   constructor(props) {
     super(props)
 
+    console.log('this.props>>>', this.props)
+
     this.state = {
       firstName: '',
       lastName: '',
@@ -41,7 +43,7 @@ class Address extends React.Component {
   handleClick() {
     this.createOrder({
       firstName: this.state.firstName,
-      lastName: this.state.firstName,
+      lastName: this.state.lastName,
       shipping: {
         name: this.state.shippingName,
         line1: this.state.shippingLine1,

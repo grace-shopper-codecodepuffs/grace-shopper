@@ -5,7 +5,7 @@ const Address = require('./address')
 const OrdersPotions = require('./ordersPotions')
 
 Order.belongsTo(User) //order belongs to one user with userId
-User.hasMany(Order) //user can have many orders one of which is cart
+User.hasMany(Order)
 
 User.afterCreate(user => {
   //create the User's cart
@@ -101,34 +101,40 @@ User.prototype.checkout = async function({
   billing
 }) {
   try {
-    //update user first/last names
-    this.update({
+    await this.update({
       firstName: firstName,
       lastName: lastName
     })
-    //get the cart we want
-    const cart = this.getCart() //we have the cart at the user that has been updated
+    // //get the cart we want
+    // const cart = this.getCart() //we have the cart at the user that has been updated
     //declare shipping/billing address (find or create)
-    const shippingAddress = Address.findOrCreate(shipping)
-    const billingAddress = Address.findOrCreate(billing)
+    const shippingAddress = await Address.create(shipping)
+    const billingAddress = await Address.create(billing)
     //update the shipping/biling addresses for the order
-    cart.setShippingAdress = shippingAddress
-    cart.setBillingAddress = billingAddress
+    // cart.setShippingAddress(shippingAddress)
+    // cart.setBillingAddress(billingAddress)
     //update the cart so it isn't a cart and theres a shipping date
-    cart.update({
-      isCart: false,
-      orderDate: new Date()
+    const cart = await Order.findOne({
+      where: {
+        isCart: true,
+        id: this.id
+      }
     })
+    await cart.update({
+      isCart: false,
+      orderDate: new Date(),
+      shippingAddressId: shippingAddress.id,
+      setBillingAddressId: billingAddress.id
+    })
+
     //initialize a new empty cart for user
-    Order.create({
+    await Order.create({
       userId: this.id
     })
   } catch (error) {
     console.error(error)
   }
 }
-
-//update new stock quantity
 
 //Order will have many potions, and will have quantity on order on the through table
 // Order will have addPotion, getPotions, removePotion, etc.
