@@ -10,11 +10,13 @@ export const UserHome = props => {
 
   return (
     <div>
-      {firstName !== null && lastName !== null ? (
+
+      {firstName && lastName ? (
         <div>
           <h2>
             Welcome back, {firstName} {lastName}!
           </h2>
+
           {/* <h4>
             Here is Your Past Order History:
           </h4>
@@ -39,7 +41,6 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id,
     email: state.user.email,
     firstName: state.user.firstName,
     lastName: state.user.lastName
