@@ -69,6 +69,19 @@ form input {
 }
 /* NAV BAR VIEW END */
 
+.google button {
+  background-color: #39c32e;
+  border-radius: 4px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.google button a {
+  color: white;
+}
+
 /* START PRODUCT CARD ON ALL PRODUCTS VIEW */
 .potion-list {
   display: flex;
