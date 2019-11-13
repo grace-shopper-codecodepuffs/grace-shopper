@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import ProductCard from './product-card'
 import {connect} from 'react-redux'
 import {getProducts} from '../store/products'
-import {addToCart} from '../store/cart'
+import {addToCart, getCart} from '../store/cart'
 
 class Potions extends Component {
   componentDidMount() {
     this.props.getProducts()
+    this.props.getCart()
   }
 
   render() {
@@ -31,7 +32,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(getProducts()),
-  addToCart: (product, quantity) => dispatch(addToCart(product, quantity))
+  addToCart: (product, quantity) => dispatch(addToCart(product, quantity)),
+  getCart: () => dispatch(getCart())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Potions)
