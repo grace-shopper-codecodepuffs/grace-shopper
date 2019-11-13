@@ -13,6 +13,7 @@ class Cart extends Component {
     this.handleRemoveClick = this.handleRemoveClick.bind(this)
     this.handleMinusClick = this.handleMinusClick.bind(this)
     this.handlePlusClick = this.handlePlusClick.bind(this)
+    this.findTotal = this.findTotal.bind(this)
   }
   componentDidMount() {
     this.props.getCart()
@@ -29,6 +30,14 @@ class Cart extends Component {
 
   handlePlusClick(id, newQ) {
     this.props.editQtInCart(id, newQ)
+  }
+
+  findTotal(cart) {
+    const total = cart.reduce((accum, potion) => {
+      const currPotion = potion.quantity * potion.price
+      return accum + currPotion
+    }, 0)
+    return Math.round(total * 100) / 100
   }
 
   render() {
@@ -62,8 +71,18 @@ class Cart extends Component {
             ))}
         </ul>
         <div>
+          <h3 className="cartline">
+            TOTAL:
+            <span className="cartpricetwo">
+              ${this.props.cart.length > 0 && this.findTotal(this.props.cart)}
+            </span>
+          </h3>
           <Link to="/checkout">
-            <button type="button">Continue to Checkout</button>
+            <div className="cartline">
+              <button type="button" className="cartremovebutton">
+                CONTINUE TO CHECKOUT
+              </button>
+            </div>
           </Link>
         </div>
       </div>
