@@ -1,5 +1,7 @@
 body {
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -12,8 +14,9 @@ label {
 
 nav a {
   display: inline-block;
-  padding: 10px;
+  padding: 20px;
   color: white;
+  font-size: 20px;
 }
 
 form div {
@@ -40,6 +43,11 @@ form input {
   background-color: #31aabc;
   font-size: 24px;
   color: white;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .homepage .a {
@@ -52,6 +60,7 @@ form input {
   display: flex;
   justify-content: space-between;
   background-color: #6c215d;
+  align-items: center;
 }
 
 .navbar .title {
@@ -113,6 +122,11 @@ form input {
   background-color: #e9561d;
   color: white;
   font-weight: bold;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 /* END PRODUCT CARD ON ALL PRODUCTS VIEW */
 /* ////////////// */
@@ -120,14 +134,12 @@ form input {
 .product-view {
   display: flex;
   flex-direction: row;
-  /* flex-wrap: wrap; */
   justify-content: center;
   align-items: flex-start;
   padding: 48px;
   background-color: darkolivegreen;
   border-radius: 4px;
-  margin-right: 50px;
-  margin-left: 50px;
+  margin: 50px;
 }
 
 .product-view-right {
@@ -160,7 +172,13 @@ form input {
   background-color: #e9561d;
   color: white;
   font-weight: bold;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
+
 /* END SINGLE PRODUCT VIEW  */
 
 /*CART VIEW*/
@@ -285,7 +303,19 @@ form input {
   width: 25%;
 }
 
-.checkout-button {
+.checkout-button button {
+  border-radius: 4px;
   padding: 16px;
+  font-size: 16px;
+  background-color: #e9561d;
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-bottom: 50px;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 /* END CHECKOUT PAGE */

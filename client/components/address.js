@@ -5,8 +5,6 @@ class Address extends React.Component {
   constructor(props) {
     super(props)
 
-    console.log('this.props>>>', this.props)
-
     this.state = {
       firstName: '',
       lastName: '',
@@ -261,7 +259,7 @@ class Address extends React.Component {
             type="text"
             name="billingFirstName"
             placeholder="First Name"
-            value={this.state.billingFirstname}
+            value={this.state.billingFirstName}
             onChange={this.handleChange}
           />
           <br />
@@ -305,8 +303,6 @@ class Address extends React.Component {
             onChange={this.handleChange}
           />
         </div>
-
-        <h2>Total: $</h2>
 
         <div className="checkout-button">
           <button type="submit" key="submit" onClick={this.handleClick}>
