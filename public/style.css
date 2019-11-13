@@ -95,8 +95,7 @@ form input {
 .auth-form,
 .welcome-page,
 .checkout-page,
-.all-potion-view,
-.cart-view {
+.all-potion-view {
   padding: 50px;
 }
 /* START PRODUCT CARD ON ALL PRODUCTS VIEW */
