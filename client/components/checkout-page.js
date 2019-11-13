@@ -4,11 +4,9 @@ import Address from './address'
 
 const CheckoutPage = () => {
   return (
-    <div className="checkoutPage">
-      <div className="fullPage">
-        <h2>Checkout</h2>
-        <Address />
-      </div>
+    <div className="checkout-page">
+      <h1>Checkout</h1>
+      <Address />
     </div>
   )
 }
