@@ -36,7 +36,7 @@ class ProductCard extends Component {
           <img src={this.props.product.picture} />
           <h3 className="potion">{this.props.product.name}</h3>
         </Link>
-        <h4 className="price">$ {this.props.product.price}</h4>
+        <h4 className="price">{this.props.product.price}</h4>
         <form name={name}>
           <input
             type="text"
