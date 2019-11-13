@@ -1,5 +1,6 @@
 import axios from 'axios'
 import history from '../history'
+import {REMOVE_USER} from './user'
 
 // Action types
 const GOT_CART = 'GOT_CART'
@@ -125,6 +126,8 @@ export default function(state = defaultCart, action) {
       return state.filter(product => product.potionId !== action.productId)
     case EDITED_QUANTITY_IN_CART:
       return action.newCart
+    case REMOVE_USER:
+      return []
     default:
       return state
   }
