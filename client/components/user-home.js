@@ -10,11 +10,22 @@ export const UserHome = props => {
 
   return (
     <div>
+
       {firstName && lastName ? (
         <div>
           <h2>
             Welcome back, {firstName} {lastName}!
           </h2>
+
+          {/* <h4>
+            Here is Your Past Order History:
+          </h4>
+
+          <br />
+          <h4>
+            Here is Your Current Cart:
+          </h4>
+           */}
         </div>
       ) : (
         <div>
