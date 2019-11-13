@@ -42,48 +42,50 @@ class Cart extends Component {
 
   render() {
     return (
-      <div className="cartbody">
+      <div className="cart-view">
         <h1 className="carttitle">Shopping Cart</h1>
-        <ul className="cartitems">
-          {this.props.cart.length > 0 &&
-            this.props.products.length > 0 &&
-            this.props.cart.map(item => (
-              <li className="cartitem">
-                <ProductInCart
-                  key={item.potionId}
-                  itemFromCart={item}
-                  potion={
-                    this.props.products.filter(
-                      potion => potion.id === item.potionId
-                    )[0]
-                  }
-                  handleMinusClick={() =>
-                    this.handleMinusClick(item.potionId, item.quantity - 1)
-                  }
-                  handlePlusClick={() =>
-                    this.handlePlusClick(item.potionId, item.quantity + 1)
-                  }
-                  handleRemoveClick={() =>
-                    this.handleRemoveClick(item.potionId)
-                  }
-                />
-              </li>
-            ))}
-        </ul>
-        <div>
-          <h3 className="cartline">
-            TOTAL:
-            <span className="cartpricetwo">
-              ${this.props.cart.length > 0 && this.findTotal(this.props.cart)}
-            </span>
-          </h3>
-          <Link to="/checkout">
-            <div className="cartline">
-              <button type="button" className="cartremovebutton">
-                CONTINUE TO CHECKOUT
-              </button>
-            </div>
-          </Link>
+        <div className="cartbody">
+          <ul className="cartitems">
+            {this.props.cart.length > 0 &&
+              this.props.products.length > 0 &&
+              this.props.cart.map(item => (
+                <li className="cartitem">
+                  <ProductInCart
+                    key={item.potionId}
+                    itemFromCart={item}
+                    potion={
+                      this.props.products.filter(
+                        potion => potion.id === item.potionId
+                      )[0]
+                    }
+                    handleMinusClick={() =>
+                      this.handleMinusClick(item.potionId, item.quantity - 1)
+                    }
+                    handlePlusClick={() =>
+                      this.handlePlusClick(item.potionId, item.quantity + 1)
+                    }
+                    handleRemoveClick={() =>
+                      this.handleRemoveClick(item.potionId)
+                    }
+                  />
+                </li>
+              ))}
+          </ul>
+          <div>
+            <h3 className="cartline">
+              TOTAL:
+              <span className="cartpricetwo">
+                ${this.props.cart.length > 0 && this.findTotal(this.props.cart)}
+              </span>
+            </h3>
+            <Link to="/checkout">
+              <div className="cartline">
+                <button type="button" className="cartremovebutton">
+                  CONTINUE TO CHECKOUT
+                </button>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     )
