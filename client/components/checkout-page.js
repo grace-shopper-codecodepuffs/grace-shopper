@@ -6,7 +6,7 @@ const CheckoutPage = () => {
   return (
     <div className="checkoutPage">
       <div className="fullPage">
-        <h3>Checkout</h3>
+        <h2>Checkout</h2>
         <Address />
       </div>
     </div>

@@ -41,6 +41,7 @@ class ProductCard extends Component {
           <input
             type="text"
             name="quantity"
+            defaultValue="1"
             onChange={this.handleChange}
             min="0"
           />
