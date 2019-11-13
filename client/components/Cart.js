@@ -72,7 +72,7 @@ class Cart extends Component {
         </ul>
         <div>
           <h3 className="cartline">
-            TOTAL:{' '}
+            TOTAL:
             <span className="cartpricetwo">
               ${this.props.cart.length > 0 && this.findTotal(this.props.cart)}
             </span>
