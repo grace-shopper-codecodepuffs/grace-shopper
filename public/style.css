@@ -44,17 +44,12 @@ form input {
   font-size: 24px;
   color: white;
   font-family: 'Titillium Web', sans-serif;
-  transition-duration: 0.5s;
-  display: inline-block;
-  perspective: 1000px;
-  transform-origin: center bottom 0px;
-  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 .homePage a {
   color: black;
 }
-.homePage h2 {
+.homePage .h {
   padding: 25px;
 }
 /* HOME PAGE VIEW END */
@@ -153,11 +148,6 @@ form input {
   background-color: #e9561d;
   color: white;
   font-weight: bold;
-  transition-duration: 0.5s;
-  display: inline-block;
-  perspective: 1000px;
-  transform-origin: center bottom 0px;
-  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 /* END PRODUCT CARD ON ALL PRODUCTS VIEW */
 /* ////////////// */
@@ -207,11 +197,6 @@ form input {
   background-color: #e9561d;
   color: white;
   font-weight: bold;
-  transition-duration: 0.5s;
-  display: inline-block;
-  perspective: 1000px;
-  transform-origin: center bottom 0px;
-  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 /* END SINGLE PRODUCT VIEW  */
@@ -259,8 +244,8 @@ form input {
 }
 .cartlinetwo {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: space-between;
+  align-items: right;
   margin: 20px 20px 20px 50px;
   font-size: inherit;
   font-weight: normal;
@@ -269,8 +254,8 @@ form input {
 
 .cartprice {
   color: #333a45;
-  padding: 0px;
-  margin: 0px 0px 0px 200px;
+  padding: 30px;
+  margin: inherit;
 }
 .cartpricetwo {
   color: #333a45;
@@ -298,8 +283,6 @@ form input {
 .cartitempreview {
   display: flex;
   align-items: center;
-  padding: 30px;
-  justify-content: right;
 }
 .cartitempreviewtwo {
   display: flex;
@@ -310,17 +293,15 @@ form input {
 .cartitemthumbnail {
   margin-right: 20px;
   border-radius: 3px;
-  max-width: 100px;
+  size: 80px;
 }
 .cartpotiondisplay {
   display: flex;
-  margin-left: 10px;
-  margin-right: 60px;
-  justify-content: space-between;
-  padding: 20px 20px 20px 20px;
+  margin-left: -10px;
+  margin-right: 20px;
 }
 .cartitemtitle {
-  margin: 20px 50px 10px 10px;
+  /* margin: 0 0 10px 0; */
   margin-left: 10px;
   margin-right: 80px;
   font-size: inherit;
@@ -388,10 +369,5 @@ form input {
   font-weight: bold;
   float: right;
   margin-bottom: 50px;
-  transition-duration: 0.5s;
-  display: inline-block;
-  perspective: 1000px;
-  transform-origin: center bottom 0px;
-  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 /* END CHECKOUT PAGE */
