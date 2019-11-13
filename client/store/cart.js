@@ -107,7 +107,9 @@ export const editQuantityInCart = (potionId, newQuantity) => async (
       cart = cart.map(orderPotionInst => {
         if (orderPotionInst.potionId === potionId) {
           orderPotionInst.quantity = newQuantity
+          return orderPotionInst
         }
+        return orderPotionInst
       })
       dispatch(editedQuantityInCart(cart))
     }
