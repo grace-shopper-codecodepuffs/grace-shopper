@@ -197,15 +197,33 @@ form input {
 }
 .cartline {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   align-items: right;
-  margin: 20px 20px 20px 800px;
+  margin: 20px 20px 20px 900px;
   font-size: inherit;
   font-weight: normal;
   color: rgba(51, 58, 69, 0.8);
 }
+.cartlinetwo {
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  margin: 20px 20px 20px 50px;
+  font-size: inherit;
+  font-weight: normal;
+  color: rgba(51, 58, 69, 0.8);
+}
+
 .cartprice {
   color: #333a45;
+  padding: 30px;
+  margin: inherit;
+}
+.cartpricetwo {
+  color: #333a45;
+  padding: 15px;
+  margin: 0px 20px 0px 0px;
 }
 .carttotal {
   font-size: 130%;
@@ -215,7 +233,7 @@ form input {
   justify-content: space-between;
   align-items: right;
   margin: 0px 20px 20px 80px;
-  padding: 20px 20px;
+  padding: 20px 60px;
   border-bottom: 2px solid rgba(51, 58, 69, 0.1);
 }
 .cartitem {
@@ -240,10 +258,15 @@ form input {
   border-radius: 3px;
   size: 80px;
 }
+.cartpotiondisplay {
+  display: flex;
+  margin-left: -10px;
+  margin-right: 20px;
+}
 .cartitemtitle {
   /* margin: 0 0 10px 0; */
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 10px;
+  margin-right: 80px;
   font-size: inherit;
 }
 .cartitemadjust {
