@@ -13,7 +13,7 @@ class Potions extends Component {
   render() {
     const {products} = this.props.products
     return (
-      <div className="all-potion-view">
+      <div>
         <h1>Our Potions</h1>
         <div className="potion-list">
           {products.length &&

@@ -2,7 +2,6 @@ body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
-  font-family: 'Titillium Web', sans-serif;
 }
 
 a {
@@ -34,6 +33,7 @@ form input {
 .homePage {
   text-align: center;
   background-size: cover;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .homePage button {
@@ -43,14 +43,15 @@ form input {
   background-color: #31aabc;
   font-size: 24px;
   color: white;
-  font-family: 'Titillium Web', sans-serif;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
-.homePage a {
-  color: black;
-}
-.homePage .h {
-  padding: 25px;
+.homepage .a {
+  color: #6c215d;
 }
 /* HOME PAGE VIEW END */
 
@@ -60,7 +61,6 @@ form input {
   justify-content: space-between;
   background-color: #6c215d;
   align-items: center;
-  height: 125px;
 }
 
 .navbar .title {
@@ -71,11 +71,10 @@ form input {
 }
 
 .navbar img {
-  background-color: white;
+  background-color: blue;
   max-width: 35px;
   height: 35px;
   border-radius: 4px;
-  padding: 5px 20px;
 }
 /* NAV BAR VIEW END */
 
@@ -92,19 +91,7 @@ form input {
   color: white;
 }
 
-.auth-form,
-.welcome-page,
-.checkout-page,
-.all-potion-view,
-.cart-view {
-  padding: 50px;
-}
 /* START PRODUCT CARD ON ALL PRODUCTS VIEW */
-
-.all-potion-view h1 {
-  margin: 0;
-}
-
 .potion-list {
   display: flex;
   justify-content: center;
@@ -122,6 +109,7 @@ form input {
   margin-bottom: 24px;
   margin: 15px;
   display: inline-block;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .product-card img {
@@ -130,7 +118,6 @@ form input {
 
 .product-card h3 {
   color: white;
-  font-size: 24px;
 }
 
 .product-card input {
@@ -148,6 +135,11 @@ form input {
   background-color: #e9561d;
   color: white;
   font-weight: bold;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 /* END PRODUCT CARD ON ALL PRODUCTS VIEW */
 /* ////////////// */
@@ -158,7 +150,7 @@ form input {
   justify-content: center;
   align-items: flex-start;
   padding: 48px;
-  background-color: #31aabc;
+  background-color: darkolivegreen;
   border-radius: 4px;
   margin: 50px;
 }
@@ -167,10 +159,6 @@ form input {
   width: 50%;
   text-align: center;
   padding-right: 50px;
-}
-
-.product-view-right h1 {
-  color: white;
 }
 
 .product-view-left {
@@ -197,6 +185,11 @@ form input {
   background-color: #e9561d;
   color: white;
   font-weight: bold;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
 /* END SINGLE PRODUCT VIEW  */
@@ -207,14 +200,15 @@ form input {
   margin: 0;
   background: #31aabc;
   padding: 30px;
-  border-radius: 4px;
 }
 
 .carttitle {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0;
   /* text-transform: uppercase; */
+  font-size: 150%;
   font-weight: bold;
 }
 
@@ -244,8 +238,8 @@ form input {
 }
 .cartlinetwo {
   display: flex;
-  justify-content: space-between;
-  align-items: right;
+  justify-content: space-evenly;
+  align-items: center;
   margin: 20px 20px 20px 50px;
   font-size: inherit;
   font-weight: normal;
@@ -254,8 +248,8 @@ form input {
 
 .cartprice {
   color: #333a45;
-  padding: 30px;
-  margin: inherit;
+  padding: 0px;
+  margin: 0px 0px 0px 200px;
 }
 .cartpricetwo {
   color: #333a45;
@@ -283,6 +277,8 @@ form input {
 .cartitempreview {
   display: flex;
   align-items: center;
+  padding: 30px;
+  justify-content: right;
 }
 .cartitempreviewtwo {
   display: flex;
@@ -293,15 +289,17 @@ form input {
 .cartitemthumbnail {
   margin-right: 20px;
   border-radius: 3px;
-  size: 80px;
+  max-width: 100px;
 }
 .cartpotiondisplay {
   display: flex;
-  margin-left: -10px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 60px;
+  justify-content: space-between;
+  padding: 20px 20px 20px 20px;
 }
 .cartitemtitle {
-  /* margin: 0 0 10px 0; */
+  margin: 20px 50px 10px 10px;
   margin-left: 10px;
   margin-right: 80px;
   font-size: inherit;
@@ -336,28 +334,26 @@ form input {
 /* END CART VIEW*/
 
 /* START CHECKOUT PAGE */
-
 .form-contact-info,
 .form-shipping-address,
 .form-billing-address,
 .form-payment-info {
   border: solid gray 1px;
   border-radius: 4px;
-  padding: 24px;
+  padding: 16px;
   box-shadow: 0 8px 6px -6px black;
-  color: #31aabc;
-}
-
-.form-contact-info {
-  width: 50%;
-}
-
-.checkout-page input {
-  width: 75%;
 }
 
 .checkoutPage h3 {
   color: #31aabc;
+}
+
+.checkoutPage input {
+  width: 50%;
+}
+
+.checkoutPage .form-contact-info input {
+  width: 25%;
 }
 
 .checkout-button button {
@@ -369,5 +365,10 @@ form input {
   font-weight: bold;
   float: right;
   margin-bottom: 50px;
+  transition-duration: 0.5s;
+  display: inline-block;
+  perspective: 1000px;
+  transform-origin: center bottom 0px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
 /* END CHECKOUT PAGE */
