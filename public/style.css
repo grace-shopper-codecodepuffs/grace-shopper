@@ -1,5 +1,5 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -17,6 +17,7 @@ nav a {
   padding: 20px;
   color: white;
   font-size: 20px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 form div {
@@ -48,6 +49,7 @@ form input {
   perspective: 1000px;
   transform-origin: center bottom 0px;
   transform: matrix(1, 0, 0, 1, 0, 0);
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .homepage .a {
@@ -80,12 +82,30 @@ form input {
 
 .google button {
   background-color: #39c32e;
-  border-radius: 4px;
-  padding: 16px;
-  font-size: 16px;
+  color: white;
+  font-family: 'Titillium Web', sans-serif;
+  border-radius: 20%;
+  font-size: 12px;
   font-weight: bold;
   text-decoration: none;
+  width: 120px;
+  height: 50px;
+  margin: 30px;
+  display: block;
 }
+.login button {
+  height: 30px;
+  background-color: #31aabc;
+  color: white;
+  border-radius: 20%;
+  font-size: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  width: 120px;
+  display: inline-block;
+  font-family: 'Titillium Web', sans-serif;
+}
+/* LOGIN PAGE */
 
 .google button a {
   color: white;
@@ -118,6 +138,7 @@ form input {
 
 .product-card h3 {
   color: white;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .product-card input {
@@ -126,6 +147,7 @@ form input {
   padding: 4px;
   text-align: center;
   font-size: 16px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .product-card button {
@@ -140,6 +162,7 @@ form input {
   perspective: 1000px;
   transform-origin: center bottom 0px;
   transform: matrix(1, 0, 0, 1, 0, 0);
+  font-family: 'Titillium Web', sans-serif;
 }
 /* END PRODUCT CARD ON ALL PRODUCTS VIEW */
 /* ////////////// */
@@ -176,6 +199,7 @@ form input {
   padding: 4px;
   text-align: center;
   font-size: 16px;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .product-view button {
@@ -190,6 +214,7 @@ form input {
   perspective: 1000px;
   transform-origin: center bottom 0px;
   transform: matrix(1, 0, 0, 1, 0, 0);
+  font-family: 'Titillium Web', sans-serif;
 }
 
 /* END SINGLE PRODUCT VIEW  */
@@ -210,6 +235,7 @@ form input {
   /* text-transform: uppercase; */
   font-size: 150%;
   font-weight: bold;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .cartitems {
@@ -220,7 +246,7 @@ form input {
 
 .cart {
   background: #fff;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font-size: 16px;
   color: #333a45;
   border-radius: 3px;
@@ -235,6 +261,7 @@ form input {
   font-size: inherit;
   font-weight: normal;
   color: rgba(51, 58, 69, 0.8);
+  font-family: 'Titillium Web', sans-serif;
 }
 .cartlinetwo {
   display: flex;
@@ -244,17 +271,20 @@ form input {
   font-size: inherit;
   font-weight: normal;
   color: rgba(51, 58, 69, 0.8);
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .cartprice {
   color: #333a45;
   padding: 0px;
   margin: 0px 0px 0px 200px;
+  font-family: 'Titillium Web', sans-serif;
 }
 .cartpricetwo {
   color: #333a45;
   padding: 15px;
   margin: 0px 20px 0px 0px;
+  font-family: 'Titillium Web', sans-serif;
 }
 .carttotal {
   font-size: 130%;
@@ -266,6 +296,7 @@ form input {
   margin: 0px 20px 20px 80px;
   padding: 20px 60px;
   border-bottom: 2px solid rgba(51, 58, 69, 0.1);
+  font-family: 'Titillium Web', sans-serif;
 }
 .cartitem {
   display: flex;
@@ -313,6 +344,7 @@ form input {
 .cartitemdescription {
   margin: 0;
   color: rgba(51, 58, 69, 0.6);
+  font-family: 'Titillium Web', sans-serif;
 }
 .cartitemquantity {
   margin-left: 50px;
@@ -324,11 +356,13 @@ form input {
   border: 2px solid rgba(51, 58, 69, 0.1);
   border-radius: 3px;
   text-align: center;
+  font-family: 'Titillium Web', sans-serif;
 }
 .cartitemprice {
   margin-left: 50px;
   margin-right: 50px;
   font-size: inherit;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 /* END CART VIEW*/
@@ -346,14 +380,17 @@ form input {
 
 .checkoutPage h3 {
   color: #31aabc;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .checkoutPage input {
   width: 50%;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .checkoutPage .form-contact-info input {
   width: 25%;
+  font-family: 'Titillium Web', sans-serif;
 }
 
 .checkout-button button {
@@ -370,5 +407,6 @@ form input {
   perspective: 1000px;
   transform-origin: center bottom 0px;
   transform: matrix(1, 0, 0, 1, 0, 0);
+  font-family: 'Titillium Web', sans-serif;
 }
 /* END CHECKOUT PAGE */
